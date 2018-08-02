@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		CDCD880E2112DD6600477F3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD880D2112DD6600477F3E /* AppDelegate.swift */; };
-		CDCD88102112DD6600477F3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD880F2112DD6600477F3E /* ViewController.swift */; };
-		CDCD88132112DD6600477F3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDCD88112112DD6600477F3E /* Main.storyboard */; };
 		CDCD88152112DD6800477F3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDCD88142112DD6800477F3E /* Assets.xcassets */; };
 		CDCD88182112DD6800477F3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDCD88162112DD6800477F3E /* LaunchScreen.storyboard */; };
 		CDCD88232112DD6800477F3E /* Ligu_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD88222112DD6800477F3E /* Ligu_SwiftTests.swift */; };
 		CDCD882E2112DD6800477F3E /* Ligu_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD882D2112DD6800477F3E /* Ligu_SwiftUITests.swift */; };
+		CDCD88402112DEEA00477F3E /* LGTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD883F2112DEEA00477F3E /* LGTabbarController.swift */; };
+		CDCD88432112EA3700477F3E /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD88422112EA3700477F3E /* UIColorExtension.swift */; };
+		CDCD884B2112F4D900477F3E /* LGBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD884A2112F4D900477F3E /* LGBaseViewController.swift */; };
+		CDCD884D2113030D00477F3E /* LGNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD884C2113030D00477F3E /* LGNavigationController.swift */; };
+		CDCD884F211309A700477F3E /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD884E211309A700477F3E /* UIImageExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +39,6 @@
 /* Begin PBXFileReference section */
 		CDCD880A2112DD6600477F3E /* Ligu_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ligu_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCD880D2112DD6600477F3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CDCD880F2112DD6600477F3E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CDCD88122112DD6600477F3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CDCD88142112DD6800477F3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDCD88172112DD6800477F3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CDCD88192112DD6800477F3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +48,11 @@
 		CDCD88292112DD6800477F3E /* Ligu_SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Ligu_SwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCD882D2112DD6800477F3E /* Ligu_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ligu_SwiftUITests.swift; sourceTree = "<group>"; };
 		CDCD882F2112DD6800477F3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDCD883F2112DEEA00477F3E /* LGTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGTabbarController.swift; sourceTree = "<group>"; };
+		CDCD88422112EA3700477F3E /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		CDCD884A2112F4D900477F3E /* LGBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGBaseViewController.swift; sourceTree = "<group>"; };
+		CDCD884C2113030D00477F3E /* LGNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGNavigationController.swift; sourceTree = "<group>"; };
+		CDCD884E211309A700477F3E /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +103,8 @@
 		CDCD880C2112DD6600477F3E /* Ligu_Swift */ = {
 			isa = PBXGroup;
 			children = (
-				CDCD880D2112DD6600477F3E /* AppDelegate.swift */,
-				CDCD880F2112DD6600477F3E /* ViewController.swift */,
-				CDCD88112112DD6600477F3E /* Main.storyboard */,
+				CDCD88412112EA2100477F3E /* Extension */,
+				CDCD883B2112DE0800477F3E /* Module */,
 				CDCD88142112DD6800477F3E /* Assets.xcassets */,
 				CDCD88162112DD6800477F3E /* LaunchScreen.storyboard */,
 				CDCD88192112DD6800477F3E /* Info.plist */,
@@ -123,6 +128,90 @@
 				CDCD882F2112DD6800477F3E /* Info.plist */,
 			);
 			path = Ligu_SwiftUITests;
+			sourceTree = "<group>";
+		};
+		CDCD883B2112DE0800477F3E /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				CDCD880D2112DD6600477F3E /* AppDelegate.swift */,
+				CDCD883C2112DE7900477F3E /* Base */,
+				CDCD88442112F3B600477F3E /* Venue */,
+				CDCD88452112F3DF00477F3E /* Discover */,
+				CDCD88462112F3EC00477F3E /* Match */,
+				CDCD88482112F43100477F3E /* Social */,
+				CDCD88492112F43700477F3E /* Mine */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		CDCD883C2112DE7900477F3E /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				CDCD883E2112DE8A00477F3E /* ViewController */,
+				CDCD883D2112DE8200477F3E /* View */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		CDCD883D2112DE8200477F3E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CDCD883E2112DE8A00477F3E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDCD883F2112DEEA00477F3E /* LGTabbarController.swift */,
+				CDCD884A2112F4D900477F3E /* LGBaseViewController.swift */,
+				CDCD884C2113030D00477F3E /* LGNavigationController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CDCD88412112EA2100477F3E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CDCD88422112EA3700477F3E /* UIColorExtension.swift */,
+				CDCD884E211309A700477F3E /* UIImageExtensions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CDCD88442112F3B600477F3E /* Venue */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Venue;
+			sourceTree = "<group>";
+		};
+		CDCD88452112F3DF00477F3E /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		CDCD88462112F3EC00477F3E /* Match */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Match;
+			sourceTree = "<group>";
+		};
+		CDCD88482112F43100477F3E /* Social */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Social;
+			sourceTree = "<group>";
+		};
+		CDCD88492112F43700477F3E /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,7 +320,6 @@
 			files = (
 				CDCD88182112DD6800477F3E /* LaunchScreen.storyboard in Resources */,
 				CDCD88152112DD6800477F3E /* Assets.xcassets in Resources */,
-				CDCD88132112DD6600477F3E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,8 +344,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDCD88102112DD6600477F3E /* ViewController.swift in Sources */,
+				CDCD88402112DEEA00477F3E /* LGTabbarController.swift in Sources */,
+				CDCD884D2113030D00477F3E /* LGNavigationController.swift in Sources */,
 				CDCD880E2112DD6600477F3E /* AppDelegate.swift in Sources */,
+				CDCD884F211309A700477F3E /* UIImageExtensions.swift in Sources */,
+				CDCD884B2112F4D900477F3E /* LGBaseViewController.swift in Sources */,
+				CDCD88432112EA3700477F3E /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,14 +385,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CDCD88112112DD6600477F3E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CDCD88122112DD6600477F3E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CDCD88162112DD6800477F3E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -433,6 +517,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BV8SCCJTGN;
 				INFOPLIST_FILE = Ligu_Swift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -451,6 +536,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BV8SCCJTGN;
 				INFOPLIST_FILE = Ligu_Swift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
