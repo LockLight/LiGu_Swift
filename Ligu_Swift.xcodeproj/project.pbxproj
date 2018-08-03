@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,12 @@
 		CDCD884B2112F4D900477F3E /* LGBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD884A2112F4D900477F3E /* LGBaseViewController.swift */; };
 		CDCD884D2113030D00477F3E /* LGNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD884C2113030D00477F3E /* LGNavigationController.swift */; };
 		CDCD884F211309A700477F3E /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD884E211309A700477F3E /* UIImageExtensions.swift */; };
+		CDCD88532113E81100477F3E /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD88522113E81100477F3E /* Global.swift */; };
+		CDCD885F2113EEDB00477F3E /* LGVenueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD885E2113EEDB00477F3E /* LGVenueViewController.swift */; };
+		CDCD88612113EF0F00477F3E /* LGDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD88602113EF0F00477F3E /* LGDiscoverViewController.swift */; };
+		CDCD88632113EF2100477F3E /* LGMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD88622113EF2100477F3E /* LGMatchViewController.swift */; };
+		CDCD88652113EF3500477F3E /* LGSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD88642113EF3500477F3E /* LGSocialViewController.swift */; };
+		CDCD88672113EF4400477F3E /* LGMineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD88662113EF4400477F3E /* LGMineViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +59,12 @@
 		CDCD884A2112F4D900477F3E /* LGBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGBaseViewController.swift; sourceTree = "<group>"; };
 		CDCD884C2113030D00477F3E /* LGNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGNavigationController.swift; sourceTree = "<group>"; };
 		CDCD884E211309A700477F3E /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		CDCD88522113E81100477F3E /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		CDCD885E2113EEDB00477F3E /* LGVenueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGVenueViewController.swift; sourceTree = "<group>"; };
+		CDCD88602113EF0F00477F3E /* LGDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGDiscoverViewController.swift; sourceTree = "<group>"; };
+		CDCD88622113EF2100477F3E /* LGMatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGMatchViewController.swift; sourceTree = "<group>"; };
+		CDCD88642113EF3500477F3E /* LGSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGSocialViewController.swift; sourceTree = "<group>"; };
+		CDCD88662113EF4400477F3E /* LGMineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGMineViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				CDCD880D2112DD6600477F3E /* AppDelegate.swift */,
+				CDCD88522113E81100477F3E /* Global.swift */,
 				CDCD883C2112DE7900477F3E /* Base */,
 				CDCD88442112F3B600477F3E /* Venue */,
 				CDCD88452112F3DF00477F3E /* Discover */,
@@ -182,6 +195,8 @@
 		CDCD88442112F3B600477F3E /* Venue */ = {
 			isa = PBXGroup;
 			children = (
+				CDCD88552113EDEF00477F3E /* ViewController */,
+				CDCD88542113EDE900477F3E /* View */,
 			);
 			path = Venue;
 			sourceTree = "<group>";
@@ -189,6 +204,8 @@
 		CDCD88452112F3DF00477F3E /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				CDCD88572113EE4000477F3E /* ViewController */,
+				CDCD88562113EE3500477F3E /* View */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -196,6 +213,8 @@
 		CDCD88462112F3EC00477F3E /* Match */ = {
 			isa = PBXGroup;
 			children = (
+				CDCD88592113EE5E00477F3E /* View */,
+				CDCD88582113EE5E00477F3E /* ViewController */,
 			);
 			path = Match;
 			sourceTree = "<group>";
@@ -203,6 +222,8 @@
 		CDCD88482112F43100477F3E /* Social */ = {
 			isa = PBXGroup;
 			children = (
+				CDCD885B2113EE6500477F3E /* View */,
+				CDCD885A2113EE6500477F3E /* ViewController */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -210,8 +231,85 @@
 		CDCD88492112F43700477F3E /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				CDCD885D2113EE6D00477F3E /* View */,
+				CDCD885C2113EE6C00477F3E /* ViewController */,
 			);
 			path = Mine;
+			sourceTree = "<group>";
+		};
+		CDCD88542113EDE900477F3E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CDCD88552113EDEF00477F3E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDCD885E2113EEDB00477F3E /* LGVenueViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CDCD88562113EE3500477F3E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CDCD88572113EE4000477F3E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDCD88602113EF0F00477F3E /* LGDiscoverViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CDCD88582113EE5E00477F3E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDCD88622113EF2100477F3E /* LGMatchViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CDCD88592113EE5E00477F3E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CDCD885A2113EE6500477F3E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDCD88642113EF3500477F3E /* LGSocialViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CDCD885B2113EE6500477F3E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CDCD885C2113EE6C00477F3E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDCD88662113EF4400477F3E /* LGMineViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CDCD885D2113EE6D00477F3E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,19 +380,22 @@
 				TargetAttributes = {
 					CDCD88092112DD6600477F3E = {
 						CreatedOnToolsVersion = 9.4.1;
+						ProvisioningStyle = Automatic;
 					};
 					CDCD881D2112DD6800477F3E = {
 						CreatedOnToolsVersion = 9.4.1;
+						ProvisioningStyle = Automatic;
 						TestTargetID = CDCD88092112DD6600477F3E;
 					};
 					CDCD88282112DD6800477F3E = {
 						CreatedOnToolsVersion = 9.4.1;
+						ProvisioningStyle = Automatic;
 						TestTargetID = CDCD88092112DD6600477F3E;
 					};
 				};
 			};
 			buildConfigurationList = CDCD88052112DD6600477F3E /* Build configuration list for PBXProject "Ligu_Swift" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -346,10 +447,16 @@
 			files = (
 				CDCD88402112DEEA00477F3E /* LGTabbarController.swift in Sources */,
 				CDCD884D2113030D00477F3E /* LGNavigationController.swift in Sources */,
+				CDCD88652113EF3500477F3E /* LGSocialViewController.swift in Sources */,
 				CDCD880E2112DD6600477F3E /* AppDelegate.swift in Sources */,
+				CDCD88612113EF0F00477F3E /* LGDiscoverViewController.swift in Sources */,
+				CDCD885F2113EEDB00477F3E /* LGVenueViewController.swift in Sources */,
 				CDCD884F211309A700477F3E /* UIImageExtensions.swift in Sources */,
 				CDCD884B2112F4D900477F3E /* LGBaseViewController.swift in Sources */,
+				CDCD88672113EF4400477F3E /* LGMineViewController.swift in Sources */,
 				CDCD88432112EA3700477F3E /* UIColorExtension.swift in Sources */,
+				CDCD88532113E81100477F3E /* Global.swift in Sources */,
+				CDCD88632113EF2100477F3E /* LGMatchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,8 +611,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -518,14 +624,11 @@
 				DEVELOPMENT_TEAM = BV8SCCJTGN;
 				INFOPLIST_FILE = Ligu_Swift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LockLightz-gmail.com.Ligu-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -537,14 +640,11 @@
 				DEVELOPMENT_TEAM = BV8SCCJTGN;
 				INFOPLIST_FILE = Ligu_Swift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LockLightz-gmail.com.Ligu-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -556,11 +656,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BV8SCCJTGN;
 				INFOPLIST_FILE = Ligu_SwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LockLightz-gmail.com.Ligu-SwiftTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -577,11 +673,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BV8SCCJTGN;
 				INFOPLIST_FILE = Ligu_SwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LockLightz-gmail.com.Ligu-SwiftTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -597,11 +689,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BV8SCCJTGN;
 				INFOPLIST_FILE = Ligu_SwiftUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LockLightz-gmail.com.Ligu-SwiftUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -617,11 +705,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BV8SCCJTGN;
 				INFOPLIST_FILE = Ligu_SwiftUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LockLightz-gmail.com.Ligu-SwiftUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

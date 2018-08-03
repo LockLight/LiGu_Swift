@@ -77,16 +77,22 @@ extension UINavigationController{
         }
     }
     
-//    func barStyle(_ style:LGNavigationBarStyle){
-//        switch style {
-//        case .white:
-//            navigationBar.barStyle = .default
-//            navigationBar.setBackgroundImage(UIImage(withColor:UIColor.hex(hexString: "#FDFDFE")), for: .default)
-//            navigationBar.shadowImage = UIImage()
-////        case .black:
-////        case .clear:
-//        }
-//    }
+    func barStyle(_ style:LGNavigationBarStyle){
+        switch style {
+        case .white:
+            navigationBar.barStyle = .default
+            navigationBar.setBackgroundImage(UIColor.hex(hexString: "#FDFDFE").image(), for: .default)
+            navigationBar.shadowImage = UIImage()
+        case .black:
+            navigationBar.barStyle = .black
+            navigationBar.setBackgroundImage(UIColor.black.image(), for: .default)
+            navigationBar.shadowImage = UIImage()
+        case .clear:
+            navigationBar.barStyle = .black
+            navigationBar.setBackgroundImage(UIImage(), for: .default)
+            navigationBar.shadowImage = UIImage()
+        }
+    }
 }
 
 
