@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD0DDE62291683AA19BD1D60 /* Pods_Ligu_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0777BE7A7DB36C6292B81F /* Pods_Ligu_Swift.framework */; };
 		CDCD880E2112DD6600477F3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD880D2112DD6600477F3E /* AppDelegate.swift */; };
 		CDCD88152112DD6800477F3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDCD88142112DD6800477F3E /* Assets.xcassets */; };
 		CDCD88182112DD6800477F3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDCD88162112DD6800477F3E /* LaunchScreen.storyboard */; };
@@ -43,6 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		81D40FB249CDAC28806921E2 /* Pods-Ligu_Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ligu_Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ligu_Swift/Pods-Ligu_Swift.debug.xcconfig"; sourceTree = "<group>"; };
+		B193C2DD10D8F0FD3F06F3A3 /* Pods-Ligu_Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ligu_Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ligu_Swift/Pods-Ligu_Swift.release.xcconfig"; sourceTree = "<group>"; };
+		BF0777BE7A7DB36C6292B81F /* Pods_Ligu_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ligu_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCD880A2112DD6600477F3E /* Ligu_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ligu_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCD880D2112DD6600477F3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDCD88142112DD6800477F3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD0DDE62291683AA19BD1D60 /* Pods_Ligu_Swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +104,8 @@
 				CDCD88212112DD6800477F3E /* Ligu_SwiftTests */,
 				CDCD882C2112DD6800477F3E /* Ligu_SwiftUITests */,
 				CDCD880B2112DD6600477F3E /* Products */,
+				FF19FFEEFE2CE70BD7F440A9 /* Pods */,
+				D0B5463D9B528F5103CFE60F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -312,6 +319,23 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D0B5463D9B528F5103CFE60F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF0777BE7A7DB36C6292B81F /* Pods_Ligu_Swift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FF19FFEEFE2CE70BD7F440A9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				81D40FB249CDAC28806921E2 /* Pods-Ligu_Swift.debug.xcconfig */,
+				B193C2DD10D8F0FD3F06F3A3 /* Pods-Ligu_Swift.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -319,9 +343,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDCD88322112DD6800477F3E /* Build configuration list for PBXNativeTarget "Ligu_Swift" */;
 			buildPhases = (
+				D5C3E91D54D775D3ACD2E5F0 /* [CP] Check Pods Manifest.lock */,
 				CDCD88062112DD6600477F3E /* Sources */,
 				CDCD88072112DD6600477F3E /* Frameworks */,
 				CDCD88082112DD6600477F3E /* Resources */,
+				EE405C4A329DE99568165263 /* [CP] Embed Pods Frameworks */,
+				72BA8BBB5F7E8E1A7EE3968A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -439,6 +466,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		72BA8BBB5F7E8E1A7EE3968A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ligu_Swift/Pods-Ligu_Swift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5C3E91D54D775D3ACD2E5F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EE405C4A329DE99568165263 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ligu_Swift/Pods-Ligu_Swift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CDCD88062112DD6600477F3E /* Sources */ = {
@@ -618,6 +693,7 @@
 		};
 		CDCD88332112DD6800477F3E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81D40FB249CDAC28806921E2 /* Pods-Ligu_Swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -634,6 +710,7 @@
 		};
 		CDCD88342112DD6800477F3E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B193C2DD10D8F0FD3F06F3A3 /* Pods-Ligu_Swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

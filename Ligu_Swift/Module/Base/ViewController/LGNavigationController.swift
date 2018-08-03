@@ -51,7 +51,7 @@ extension UINavigationController:UIGestureRecognizerDelegate{
 extension UINavigationController{
     override open var preferredStatusBarStyle:UIStatusBarStyle{
         guard let topVC = topViewController else {
-            return .lightContent
+            return .default
         }
         return topVC.preferredStatusBarStyle
     }
@@ -78,6 +78,16 @@ extension UINavigationController{
     }
     
     func barStyle(_ style:LGNavigationBarStyle){
+        //navibar,BarButtonItem文字属性
+        let itemAttr = [NSAttributedStringKey.foregroundColor: UIColor.hex(hexString:"#00ACCC"),
+                       NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]
+        let barAttr =  [NSAttributedStringKey.foregroundColor: UIColor.hex(hexString:"#000000"),
+                        NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18)]
+        
+        UIBarButtonItem.appearance().setTitleTextAttributes(itemAttr, for: .normal)
+        navigationBar.titleTextAttributes = barAttr
+        
+       
         switch style {
         case .white:
             navigationBar.barStyle = .default
@@ -90,7 +100,7 @@ extension UINavigationController{
         case .clear:
             navigationBar.barStyle = .black
             navigationBar.setBackgroundImage(UIImage(), for: .default)
-            navigationBar.shadowImage = UIImage()
+            navigationBar.shadowImage = nil
         }
     }
 }

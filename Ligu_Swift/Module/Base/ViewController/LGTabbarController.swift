@@ -74,24 +74,10 @@ class LGTabbarController: UITabBarController {
     }
 }
 
-//extension LGTabbarController{
-//    public class func initializeOnceMethod(){
-//        // 1.正常状态下的文字
-//        let normalAttr = [NSAttributedStringKey.foregroundColor: UIColor.hex(hexString:"#272324"),
-//                          NSAttributedStringKey.font: UIFont.systemFont(ofSize: 10)]
-//        
-//        // 2.选中状态下的文字
-//        let selectAttr = [NSAttributedStringKey.foregroundColor: UIColor.hex(hexString:"#00ACCC"),
-//                          NSAttributedStringKey.font: UIFont.systemFont(ofSize: 10)]
-//        
-//        UITabBarItem.appearance().setTitleTextAttributes(normalAttr, for: .normal)
-//        UITabBarItem.appearance().setTitleTextAttributes(selectAttr, for: .selected)
-//    }
-//}
 
 extension LGTabbarController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        guard let select = selectedViewController else { return .lightContent }
+        guard let select = selectedViewController else { return .default }
         return select.preferredStatusBarStyle
     }
 }

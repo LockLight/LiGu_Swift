@@ -48,6 +48,6 @@ class LGBaseViewController: UIViewController {
 
 extension LGBaseViewController{
     override var preferredStatusBarStyle:UIStatusBarStyle{
-        return .lightContent
+        return .default
     }
 }
