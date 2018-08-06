@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CD0DDE62291683AA19BD1D60 /* Pods_Ligu_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0777BE7A7DB36C6292B81F /* Pods_Ligu_Swift.framework */; };
+		CDB734D721182E6200C16E41 /* LGAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB734D621182E6200C16E41 /* LGAPI.swift */; };
+		CDB734D92118477600C16E41 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB734D82118477600C16E41 /* UIDeviceExtension.swift */; };
 		CDCD880E2112DD6600477F3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD880D2112DD6600477F3E /* AppDelegate.swift */; };
 		CDCD88152112DD6800477F3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDCD88142112DD6800477F3E /* Assets.xcassets */; };
 		CDCD88182112DD6800477F3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDCD88162112DD6800477F3E /* LaunchScreen.storyboard */; };
@@ -47,6 +49,8 @@
 		81D40FB249CDAC28806921E2 /* Pods-Ligu_Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ligu_Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ligu_Swift/Pods-Ligu_Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		B193C2DD10D8F0FD3F06F3A3 /* Pods-Ligu_Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ligu_Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ligu_Swift/Pods-Ligu_Swift.release.xcconfig"; sourceTree = "<group>"; };
 		BF0777BE7A7DB36C6292B81F /* Pods_Ligu_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ligu_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDB734D621182E6200C16E41 /* LGAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGAPI.swift; sourceTree = "<group>"; };
+		CDB734D82118477600C16E41 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		CDCD880A2112DD6600477F3E /* Ligu_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ligu_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCD880D2112DD6600477F3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDCD88142112DD6800477F3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -97,6 +101,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CDB734D521182E3A00C16E41 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				CDB734D621182E6200C16E41 /* LGAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		CDCD88012112DD6600477F3E = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +134,7 @@
 		CDCD880C2112DD6600477F3E /* Ligu_Swift */ = {
 			isa = PBXGroup;
 			children = (
+				CDB734D521182E3A00C16E41 /* API */,
 				CDCD88412112EA2100477F3E /* Extension */,
 				CDCD883B2112DE0800477F3E /* Module */,
 				CDCD88142112DD6800477F3E /* Assets.xcassets */,
@@ -152,6 +165,7 @@
 		CDCD883B2112DE0800477F3E /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				CDB734D82118477600C16E41 /* UIDeviceExtension.swift */,
 				CDCD880D2112DD6600477F3E /* AppDelegate.swift */,
 				CDCD88522113E81100477F3E /* Global.swift */,
 				CDCD883C2112DE7900477F3E /* Base */,
@@ -527,9 +541,11 @@
 				CDCD88612113EF0F00477F3E /* LGDiscoverViewController.swift in Sources */,
 				CDCD885F2113EEDB00477F3E /* LGVenueViewController.swift in Sources */,
 				CDCD884F211309A700477F3E /* UIImageExtensions.swift in Sources */,
+				CDB734D721182E6200C16E41 /* LGAPI.swift in Sources */,
 				CDCD884B2112F4D900477F3E /* LGBaseViewController.swift in Sources */,
 				CDCD88672113EF4400477F3E /* LGMineViewController.swift in Sources */,
 				CDCD88432112EA3700477F3E /* UIColorExtension.swift in Sources */,
+				CDB734D92118477600C16E41 /* UIDeviceExtension.swift in Sources */,
 				CDCD88532113E81100477F3E /* Global.swift in Sources */,
 				CDCD88632113EF2100477F3E /* LGMatchViewController.swift in Sources */,
 			);

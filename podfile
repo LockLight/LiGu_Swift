@@ -1,0 +1,28 @@
+platform :ios, '8.0'
+
+use_frameworks!
+inhibit_all_warnings!
+
+target 'Ligu_Swift' do
+
+plugin 'cocoapods-keys', {
+  :project => "Ligu_Swift",
+  :keys => [
+    "LGNetworkKey",
+  ]
+}
+
+pod 'SnapKit'
+pod 'Then'
+pod 'Moya'
+pod 'HandyJSON'
+pod 'Kingfisher'
+pod 'Reusable'
+pod 'LLCycleScrollView'
+pod 'MJRefresh'
+pod 'MBProgressHUD'
+pod 'HMSegmentedControl'
+pod 'IQKeyboardManagerSwift'
+pod 'EmptyDataSet-Swift'
+
+end
