@@ -18,7 +18,9 @@ enum LGApi {
 fileprivate struct LGApiConfig{
     fileprivate static let keys = Ligu_swiftKeys()
     static let apiKey = keys.lGNetworkKey()
+    static let platfromID = "ve.ios"
     static let timestamp = Date().timeIntervalSince1970.description
+    static let randomNum = String(arc4random()%1000)
 }
 
 extension LGApi:TargetType{
@@ -54,6 +56,16 @@ extension LGApi:TargetType{
     }
 
     var headers: [String : String]?{
+        var params:[String:Any]!
+        var sign = String()
+        switch self {
+        case .HotCommandVenue(let city,let lon,let lat,let orderBy,let pageNum):
+            params["city"] = city
+            params["lon"] = lon
+            params["lat"] = lat
+            params["descType"] = orderBy
+            sign = signEncrypt("venue/search?pageNo=\(pageNum)&pageSize=\(LGPageSize)", params, LGApiConfig.randomNum, LGApiConfig.timestamp)
+        }
         return [
             "X-Request-Token":"",
             "X-Request-DeviceName":UIDevice.current.modelName,
@@ -62,10 +74,10 @@ extension LGApi:TargetType{
             "X-Request-AppVersion":LGLocalVersion,
             "X-Request-AppType":"public",
             "X-Request-DeviceResolution":"\(screenWidth*screenHeight)",
-            "X-Request-Time":Date().timeIntervalSince1970.description,
-            "X-Request-Id":"ve.ios",
-            "X-Request-Nonce":String(arc4random()%1000),
-//            "X-Request-Sign"
+            "X-Request-Time":LGApiConfig.timestamp,
+            "X-Request-Id":LGApiConfig.platfromID,
+            "X-Request-Nonce":LGApiConfig.randomNum,
+            "X-Request-Sign":sign
         ]
     }
     
@@ -73,6 +85,33 @@ extension LGApi:TargetType{
     public var validationType:ValidationType{
         return .successCodes  //HTTP code 200-299
     }
+    
+    //
+    private func signEncrypt(_ url:String,_ params:[String:Any],_ randomNum:String,_ timeStamp:String) -> String{
+        var tempArr = Array<String>()
+        tempArr.append(LGLocalVersion)
+        tempArr.append(LGApiConfig.platfromID)
+        tempArr.append(LGApiConfig.timestamp)
+        tempArr.append(LGApiConfig.randomNum)
+        tempArr.append(LGApiConfig.keys.lGNetworkKey())
+        
+        
+        return ""
+    }
+    
+    private func sortAllKeys(_ url:String,_ params:[String:Any]) -> Array<String>{
+        var mergeParams = params
+        
+       //如果URL中存在?说明url上拼接了参数
+        if url.contains("?") {
+            var urlTemp = url.components(separatedBy: "?").last
+            var urlParams = Dictionary<String, String>.urlConvertToDict(urlTemp!)
+            
+        }
+        
+        return []
+    }
+
 }
 
 
