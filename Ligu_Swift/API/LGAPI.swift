@@ -64,7 +64,7 @@ extension LGApi:TargetType{
             params["lon"] = lon
             params["lat"] = lat
             params["descType"] = orderBy
-            sign = signEncrypt("venue/search?pageNo=\(pageNum)&pageSize=\(LGPageSize)", params, LGApiConfig.randomNum, LGApiConfig.timestamp)
+            sign = signEncrypt("venue/search?pageNo=\(pageNum)&pageSize=\(LGPageSize)", params)
         }
         return [
             "X-Request-Token":"",
@@ -86,32 +86,87 @@ extension LGApi:TargetType{
         return .successCodes  //HTTP code 200-299
     }
     
-    //
-    private func signEncrypt(_ url:String,_ params:[String:Any],_ randomNum:String,_ timeStamp:String) -> String{
+    //加密
+    private func signEncrypt(_ url:String,_ params:[String:Any]) -> String{
         var tempArr = Array<String>()
         tempArr.append(LGLocalVersion)
         tempArr.append(LGApiConfig.platfromID)
         tempArr.append(LGApiConfig.timestamp)
         tempArr.append(LGApiConfig.randomNum)
         tempArr.append(LGApiConfig.keys.lGNetworkKey())
+        tempArr += sortAllKeys(url, params)
         
+        let result = tempArr.joined(separator: "&")
         
-        return ""
+        return result.md5
     }
     
+    //升序key
     private func sortAllKeys(_ url:String,_ params:[String:Any]) -> Array<String>{
         var mergeParams = params
         
        //如果URL中存在?说明url上拼接了参数
         if url.contains("?") {
-            var urlTemp = url.components(separatedBy: "?").last
-            var urlParams = Dictionary<String, String>.urlConvertToDict(urlTemp!)
-            
+            let urlTemp = url.components(separatedBy: "?").last
+            let urlParams = Dictionary<String, Any>.urlConvertToDict(urlTemp!)
+            mergeParams += urlParams
         }
         
-        return []
+        let keys = Array(mergeParams.keys)
+        
+        //如果字典为空就直接返回string类型空数组
+        if keys.isEmpty { return [""] }
+        
+        var keyArray = Array<String>()
+        let sortedArray = keys.sorted()
+        for key in sortedArray {
+            var tempStr = String()
+            
+            let val = mergeParams[key] as AnyObject
+            if val is Array<Any> || val is Dictionary<String, Any>{
+                let jsonData = try? JSONSerialization.data(withJSONObject: val, options: JSONSerialization.WritingOptions(rawValue: 0))
+                tempStr = String(data: jsonData!, encoding: .utf8)!
+                if tempStr.contains("\\"){
+                    tempStr = tempStr.replacingOccurrences(of: "\\", with: "")
+                }
+            }else{
+                tempStr = mergeParams[key] as! String
+            }
+            
+            keyArray.append(String(format: "%@=%@", key,tempStr))
+        }
+        
+        return keyArray
     }
-
 }
+
+extension Response{
+    func mapModel<T:HandyJSON>(_ type:T.Type) throws -> T{
+        let jsonString = String(data:data,encoding:.utf8)
+        guard let model = JSONDeserializer<T>.deserializeFrom(json: jsonString) else {
+            throw MoyaError.jsonMapping(self)
+        }
+        return model
+    }
+}
+
+//extension MoyaProvider{
+//    @discardableResult
+//    open func request<T:HandyJSON>(_ target:Target,
+//                                   model:T.Type,
+//                                   completion: ((_ returnData: T?) -> Void)?) -> Cancellable? {
+//
+//        return request(target, completion: { (result) in
+//            guard let completion = completion else {return}
+//            guard let returnData = try? result.value?.mapModel(ResponseData<T>.self) else {
+//                completion(nil)
+//                return
+//            }
+//            completion(returnData?.data?.returnData)
+//        })
+//    }
+//}
+
+
 
 

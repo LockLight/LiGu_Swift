@@ -12,6 +12,8 @@
 		CDB734D92118477600C16E41 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB734D82118477600C16E41 /* UIDeviceExtension.swift */; };
 		CDBCE5A4211986EC0083CFE4 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCE5A3211986EC0083CFE4 /* DictionaryExtension.swift */; };
 		CDBCE5A62119897B0083CFE4 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCE5A52119897B0083CFE4 /* ArrayExtension.swift */; };
+		CDBCE5A8211AC13B0083CFE4 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCE5A7211AC13B0083CFE4 /* StringExtension.swift */; };
+		CDBCE5AC211AD4430083CFE4 /* LGModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCE5AB211AD4430083CFE4 /* LGModel.swift */; };
 		CDCD880E2112DD6600477F3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD880D2112DD6600477F3E /* AppDelegate.swift */; };
 		CDCD88152112DD6800477F3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDCD88142112DD6800477F3E /* Assets.xcassets */; };
 		CDCD88182112DD6800477F3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDCD88162112DD6800477F3E /* LaunchScreen.storyboard */; };
@@ -55,6 +57,9 @@
 		CDB734D82118477600C16E41 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		CDBCE5A3211986EC0083CFE4 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
 		CDBCE5A52119897B0083CFE4 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		CDBCE5A7211AC13B0083CFE4 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		CDBCE5A9211AC3740083CFE4 /* Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridging.h; sourceTree = "<group>"; };
+		CDBCE5AB211AD4430083CFE4 /* LGModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGModel.swift; sourceTree = "<group>"; };
 		CDCD880A2112DD6600477F3E /* Ligu_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ligu_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCD880D2112DD6600477F3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDCD88142112DD6800477F3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,6 +118,14 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		CDBCE5AA211AD41E0083CFE4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CDBCE5AB211AD4430083CFE4 /* LGModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CDCD88012112DD6600477F3E = {
 			isa = PBXGroup;
 			children = (
@@ -139,11 +152,13 @@
 			isa = PBXGroup;
 			children = (
 				CDB734D521182E3A00C16E41 /* API */,
+				CDBCE5AA211AD41E0083CFE4 /* Model */,
 				CDCD88412112EA2100477F3E /* Extension */,
 				CDCD883B2112DE0800477F3E /* Module */,
 				CDCD88142112DD6800477F3E /* Assets.xcassets */,
 				CDCD88162112DD6800477F3E /* LaunchScreen.storyboard */,
 				CDCD88192112DD6800477F3E /* Info.plist */,
+				CDBCE5A9211AC3740083CFE4 /* Bridging.h */,
 			);
 			path = Ligu_Swift;
 			sourceTree = "<group>";
@@ -215,6 +230,7 @@
 				CDB734D82118477600C16E41 /* UIDeviceExtension.swift */,
 				CDBCE5A3211986EC0083CFE4 /* DictionaryExtension.swift */,
 				CDBCE5A52119897B0083CFE4 /* ArrayExtension.swift */,
+				CDBCE5A7211AC13B0083CFE4 /* StringExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -548,9 +564,11 @@
 				CDCD885F2113EEDB00477F3E /* LGVenueViewController.swift in Sources */,
 				CDCD884F211309A700477F3E /* UIImageExtensions.swift in Sources */,
 				CDB734D721182E6200C16E41 /* LGAPI.swift in Sources */,
+				CDBCE5A8211AC13B0083CFE4 /* StringExtension.swift in Sources */,
 				CDCD884B2112F4D900477F3E /* LGBaseViewController.swift in Sources */,
 				CDCD88672113EF4400477F3E /* LGMineViewController.swift in Sources */,
 				CDCD88432112EA3700477F3E /* UIColorExtension.swift in Sources */,
+				CDBCE5AC211AD4430083CFE4 /* LGModel.swift in Sources */,
 				CDBCE5A62119897B0083CFE4 /* ArrayExtension.swift in Sources */,
 				CDB734D92118477600C16E41 /* UIDeviceExtension.swift in Sources */,
 				CDBCE5A4211986EC0083CFE4 /* DictionaryExtension.swift in Sources */,
@@ -653,7 +671,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -707,7 +725,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -727,6 +745,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LockLightz-gmail.com.Ligu-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/locklight/Documents/Ligu_Swift/Ligu_Swift/Bridging.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -744,6 +763,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LockLightz-gmail.com.Ligu-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/locklight/Documents/Ligu_Swift/Ligu_Swift/Bridging.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
