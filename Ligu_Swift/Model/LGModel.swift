@@ -8,13 +8,23 @@
 
 import HandyJSON
 
+struct HotCommandVennueModel:HandyJSON{
+    var businessCirclesName:String?
+    var description:String?
+    var distance:String?
+    var id:String?
+    var logoUrl:String?
+    var name:String?
+    var score:String?
+    var judgeCount:String?
+}
+
 extension Array:HandyJSON{}
 
-//struct ResponseData<T: HandyJSON>: HandyJSON {
-//    
-//    
-//    var tips:String?
-//    var status:Int = 0
-//    var code:String
-//    var data:T?
-//}
+struct ResponseData<T: HandyJSON>: HandyJSON {
+    var tips:String?
+    var status:Int?
+    var code:String?
+    var data:T?
+}
+
