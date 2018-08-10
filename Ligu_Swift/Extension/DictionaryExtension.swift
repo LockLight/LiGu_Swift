@@ -125,7 +125,7 @@ extension Dictionary {
     
     /// EZSE: URL parameters string convert to dict
     public static func urlConvertToDict(_ query:String) -> [String:Any]{
-        var dict:[String:Any]!
+        var dict = Dictionary<String,Any>()
         let parameterArray = query.components(separatedBy: "&")
         
         for params in parameterArray {

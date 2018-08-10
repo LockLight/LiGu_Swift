@@ -22,6 +22,19 @@ let LoadingPlugin = NetworkActivityPlugin { (type, target) in
     }
 }
 
+let LoggerPlugin = NetworkLoggerPlugin(verbose: true, cURL: true,requestDataFormatter: { (data:Data) -> (String) in
+    return String(data: data, encoding: .utf8)!
+}, responseDataFormatter: { (data: Data) -> Data in
+    do {
+        let dataAsJSON = try JSONSerialization.jsonObject(with: data)// Data 转 JSON
+        // JSON 转 Data，格式化输出。
+        let prettyData =  try JSONSerialization.data(withJSONObject: dataAsJSON, options: .prettyPrinted)
+        return prettyData
+    } catch {
+        return data
+    }
+})
+
 let timeoutClosure = {(endpoint: Endpoint, closure: MoyaProvider<LGApi>.RequestResultClosure) -> Void in
     
     if var urlRequest = try? endpoint.urlRequest() {
@@ -32,8 +45,8 @@ let timeoutClosure = {(endpoint: Endpoint, closure: MoyaProvider<LGApi>.RequestR
     }
 }
 
-let ApiProvider = MoyaProvider<LGApi>(requestClosure:timeoutClosure)
-let ApiLoadingProvider = MoyaProvider<LGApi>(requestClosure: timeoutClosure, plugins: [LoadingPlugin])
+let ApiProvider = MoyaProvider<LGApi>(requestClosure:timeoutClosure,plugins:[LoggerPlugin])
+let ApiLoadingProvider = MoyaProvider<LGApi>(requestClosure: timeoutClosure, plugins: [LoadingPlugin,LoggerPlugin])
 
 enum LGApi {
     case HotCommandVenue(city:String,lon:String,lat:String,orderBy:Int,pageNum:Int) //热门推荐场馆
@@ -68,7 +81,7 @@ extension LGApi:TargetType{
     var sampleData: Data { return "".data(using: String.Encoding.utf8)! }
 
     var task: Task{
-        var parameters:[String:Any]!
+        var parameters = Dictionary<String,Any>()
         switch self {
         case .HotCommandVenue(let city,let lon,let lat,let orderBy, _):
             parameters["city"] = city
@@ -80,7 +93,7 @@ extension LGApi:TargetType{
     }
 
     var headers: [String : String]?{
-        var params:[String:Any]!
+        var params = Dictionary<String,Any>()
         var sign = String()
         switch self {
         case .HotCommandVenue(let city,let lon,let lat,let orderBy,let pageNum):
@@ -89,6 +102,7 @@ extension LGApi:TargetType{
             params["lat"] = lat
             params["descType"] = orderBy
             sign = signEncrypt("venue/search?pageNo=\(pageNum)&pageSize=\(LGPageSize)", params)
+            
         }
         return [
             "X-Request-Token":"",
@@ -154,7 +168,7 @@ extension LGApi:TargetType{
                     tempStr = tempStr.replacingOccurrences(of: "\\", with: "")
                 }
             }else{
-                tempStr = mergeParams[key] as! String
+                tempStr = String(format: "%@", val as! CVarArg)
             }
             
             keyArray.append(String(format: "%@=%@", key,tempStr))
@@ -186,6 +200,7 @@ extension MoyaProvider{
                 completion(nil)
                 return
             }
+            
             completion(returnData?.data)
         })
     }
