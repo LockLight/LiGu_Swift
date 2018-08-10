@@ -67,8 +67,8 @@ extension LGApi:TargetType{
 
     var path: String{
         switch self {
-        case .HotCommandVenue(_,_,_,_,let pageNum):
-            return "venue/search?pageNo=\(pageNum)&pageSize=\(LGPageSize)"
+        case .HotCommandVenue(_,_,_,_,_):
+            return "venue/search"
         }
     }
 
@@ -83,12 +83,15 @@ extension LGApi:TargetType{
     var task: Task{
         var parameters = Dictionary<String,Any>()
         switch self {
-        case .HotCommandVenue(let city,let lon,let lat,let orderBy, _):
+        case .HotCommandVenue(let city,let lon,let lat,let orderBy, let pageNum):
+            parameters["pageNo"] = pageNum
+            parameters["pageSize"] = LGPageSize
             parameters["city"] = city
             parameters["lon"] = lon
             parameters["lat"] = lat
             parameters["descType"] = orderBy
         }
+        
         return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
     }
 
@@ -97,11 +100,13 @@ extension LGApi:TargetType{
         var sign = String()
         switch self {
         case .HotCommandVenue(let city,let lon,let lat,let orderBy,let pageNum):
+            params["pageNo"] = pageNum
+            params["pageSize"] = LGPageSize
             params["city"] = city
             params["lon"] = lon
             params["lat"] = lat
             params["descType"] = orderBy
-            sign = signEncrypt("venue/search?pageNo=\(pageNum)&pageSize=\(LGPageSize)", params)
+            sign = signEncrypt("venue/search", params)
             
         }
         return [
@@ -135,7 +140,6 @@ extension LGApi:TargetType{
         tempArr += sortAllKeys(url, params)
         
         let result = tempArr.joined(separator: "&")
-        
         return result.md5
     }
     
