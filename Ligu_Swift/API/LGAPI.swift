@@ -11,6 +11,9 @@ import HandyJSON
 import Keys
 import MBProgressHUD
 
+/// EZSE: 当前请求参数
+typealias Parameters = [String:Any]
+
 let LoadingPlugin = NetworkActivityPlugin { (type, target) in
     guard let vc = topVC else { return }
     switch type {
@@ -79,35 +82,33 @@ extension LGApi:TargetType{
     }
 
     var sampleData: Data { return "".data(using: String.Encoding.utf8)! }
+    
+    var parameters:Parameters{
+        switch self {
+        case .HotCommandVenue(let city, let lon,let lat ,let orderBy,let pageNum):
+            return ["pageNo":   pageNum,
+                    "pageSize": LGPageSize,
+                    "city":     city,
+                    "lon" :     lon,
+                    "lat" :     lat,
+                    "descType": orderBy
+                   ]
+//        default:  return [:]
+        }
+    }
 
     var task: Task{
-        var parameters = Dictionary<String,Any>()
         switch self {
-        case .HotCommandVenue(let city,let lon,let lat,let orderBy, let pageNum):
-            parameters["pageNo"] = pageNum
-            parameters["pageSize"] = LGPageSize
-            parameters["city"] = city
-            parameters["lon"] = lon
-            parameters["lat"] = lat
-            parameters["descType"] = orderBy
+        case .HotCommandVenue:
+            return .requestParameters(parameters:parameters, encoding: URLEncoding.default)
         }
-        
-        return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
     }
 
     var headers: [String : String]?{
-        var params = Dictionary<String,Any>()
         var sign = String()
         switch self {
-        case .HotCommandVenue(let city,let lon,let lat,let orderBy,let pageNum):
-            params["pageNo"] = pageNum
-            params["pageSize"] = LGPageSize
-            params["city"] = city
-            params["lon"] = lon
-            params["lat"] = lat
-            params["descType"] = orderBy
-            sign = signEncrypt("venue/search", params)
-            
+        case .HotCommandVenue:
+            sign = signEncrypt("venue/search", parameters)
         }
         return [
             "X-Request-Token":"",
@@ -124,12 +125,12 @@ extension LGApi:TargetType{
         ]
     }
     
-    //获得或者设置用于指定所执行的验证类型的值
+    /// EZSE: 获得或者设置用于指定所执行的验证类型的值
     public var validationType:ValidationType{
         return .successCodes  //HTTP code 200-299
     }
     
-    //加密
+    /// EZSE: 加密 url:当前url的path  params:当前请求参数
     private func signEncrypt(_ url:String,_ params:[String:Any]) -> String{
         var tempArr = Array<String>()
         tempArr.append(LGLocalVersion)
@@ -143,7 +144,7 @@ extension LGApi:TargetType{
         return result.md5
     }
     
-    //升序key
+    /// EZSE: 升序key排列
     private func sortAllKeys(_ url:String,_ params:[String:Any]) -> Array<String>{
         var mergeParams = params
         
@@ -182,6 +183,7 @@ extension LGApi:TargetType{
     }
 }
 
+/// EZSE: 模型解析
 extension Response{
     func mapModel<T:HandyJSON>(_ type:T.Type) throws -> T{
         let jsonString = String(data:data,encoding:.utf8)
@@ -192,6 +194,7 @@ extension Response{
     }
 }
 
+/// EZSE: 请求方法封装
 extension MoyaProvider{
     @discardableResult
     open func request<T:HandyJSON>(_ target:Target,
