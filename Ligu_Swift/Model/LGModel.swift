@@ -19,6 +19,14 @@ struct HotCommandVennueModel:HandyJSON{
     var judgeCount:String?
 }
 
+struct CarouseModel:HandyJSON{
+    var imgUrl:String?
+    var activeUrl:String?
+    var id:String?
+    var articleId:String?
+    var isArticle:Int?
+}
+
 extension Array:HandyJSON{}
 
 struct ResponseData<T: HandyJSON>: HandyJSON {

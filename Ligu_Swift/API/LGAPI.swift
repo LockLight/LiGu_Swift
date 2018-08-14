@@ -10,9 +10,13 @@ import Moya
 import HandyJSON
 import Keys
 import MBProgressHUD
+import Kingfisher
+
 
 /// EZSE: 当前请求参数
 typealias Parameters = [String:Any]
+/// EZSE: 超时时长
+private var requestTimeOut:Double = 20
 
 let LoadingPlugin = NetworkActivityPlugin { (type, target) in
     guard let vc = topVC else { return }
@@ -25,9 +29,7 @@ let LoadingPlugin = NetworkActivityPlugin { (type, target) in
     }
 }
 
-let LoggerPlugin = NetworkLoggerPlugin(verbose: true, cURL: true,requestDataFormatter: { (data:Data) -> (String) in
-    return String(data: data, encoding: .utf8)!
-}, responseDataFormatter: { (data: Data) -> Data in
+let LoggerPlugin = NetworkLoggerPlugin(verbose: true, cURL: true,responseDataFormatter: { (data: Data) -> Data in
     do {
         let dataAsJSON = try JSONSerialization.jsonObject(with: data)// Data 转 JSON
         // JSON 转 Data，格式化输出。
@@ -38,10 +40,28 @@ let LoggerPlugin = NetworkLoggerPlugin(verbose: true, cURL: true,requestDataForm
     }
 })
 
-let timeoutClosure = {(endpoint: Endpoint, closure: MoyaProvider<LGApi>.RequestResultClosure) -> Void in
+let myEndpointClosure = { (target: LGApi) -> Endpoint in
+    //这里把endpoint重新构造一遍主要为了解决网络请求地址里面含有? 时无法解析的bug  https://github.com/Moya/Moya/issues/1198
+    LGLog("baseURL:\(target.baseURL)\n path:\(target.path)")
+    let url = target.baseURL.absoluteString + target.path
+    LGLog("url:\(url)")
     
+    var endpoint = Endpoint(url: url,
+                            sampleResponseClosure: { .networkResponse(200, target.sampleData) },
+                            method: target.method,
+                            task: target.task,
+                            httpHeaderFields: target.headers)
+    return endpoint
+}
+
+let timeoutClosure = {(endpoint: Endpoint, closure: MoyaProvider<LGApi>.RequestResultClosure) -> Void in
     if var urlRequest = try? endpoint.urlRequest() {
-        urlRequest.timeoutInterval = 20
+        urlRequest.timeoutInterval = requestTimeOut
+        if let requestData = urlRequest.httpBody{
+            LGLog("\(urlRequest.url!)"+"\n"+"\(urlRequest.httpMethod ?? "")"+"发送参数"+"\(String(data: urlRequest.httpBody!, encoding: String.Encoding.utf8) ?? "")")
+        }else{
+            LGLog("\(urlRequest.url!)"+"\(String(describing: urlRequest.httpMethod))")
+        }
         closure(.success(urlRequest))
     } else {
         closure(.failure(MoyaError.requestMapping(endpoint.url)))
@@ -51,16 +71,18 @@ let timeoutClosure = {(endpoint: Endpoint, closure: MoyaProvider<LGApi>.RequestR
 let ApiProvider = MoyaProvider<LGApi>(requestClosure:timeoutClosure,plugins:[LoggerPlugin])
 let ApiLoadingProvider = MoyaProvider<LGApi>(requestClosure: timeoutClosure, plugins: [LoadingPlugin,LoggerPlugin])
 
+
 enum LGApi {
     case HotCommandVenue(city:String,lon:String,lat:String,orderBy:Int,pageNum:Int) //热门推荐场馆
+    case discoverCarousel(type:Int)  //发现轮播资讯
 }
 
 fileprivate struct LGApiConfig{
     fileprivate static let keys = Ligu_swiftKeys()
     static let apiKey = keys.lGNetworkKey()
     static let platfromID = "ve.ios"
-    static let timestamp = Date().timeIntervalSince1970.description
     static let randomNum = String(arc4random()%1000)
+    static let timestamp = String(Date().timeIntervalSince1970)
 }
 
 extension LGApi:TargetType{
@@ -70,14 +92,17 @@ extension LGApi:TargetType{
 
     var path: String{
         switch self {
-        case .HotCommandVenue(_,_,_,_,_):
-            return "venue/search"
+        case .HotCommandVenue(_,_,_,_,let pageNum):
+            return "venue/search?pageNo=\(pageNum)&pageSize=\(LGPageSize)"
+        case .discoverCarousel:
+            return "banner/list"
         }
     }
 
     var method: Moya.Method{
         switch self {
-        case .HotCommandVenue: return .get
+        case .HotCommandVenue: return .post
+        case .discoverCarousel: return .get
         }
     }
 
@@ -85,21 +110,20 @@ extension LGApi:TargetType{
     
     var parameters:Parameters{
         switch self {
-        case .HotCommandVenue(let city, let lon,let lat ,let orderBy,let pageNum):
-            return ["pageNo":   pageNum,
-                    "pageSize": LGPageSize,
-                    "city":     city,
+        case .HotCommandVenue(let city, let lon,let lat ,let orderBy,_):
+            return ["city":     city,
                     "lon" :     lon,
                     "lat" :     lat,
                     "descType": orderBy
                    ]
-//        default:  return [:]
+        case .discoverCarousel(let type):
+            return ["type":type]
         }
     }
 
     var task: Task{
         switch self {
-        case .HotCommandVenue:
+        case .HotCommandVenue,.discoverCarousel:
             return .requestParameters(parameters:parameters, encoding: URLEncoding.default)
         }
     }
@@ -107,18 +131,20 @@ extension LGApi:TargetType{
     var headers: [String : String]?{
         var sign = String()
         switch self {
-        case .HotCommandVenue:
-            sign = signEncrypt("venue/search", parameters)
+        case .HotCommandVenue(_,_,_,_,let pageNum):
+            sign = signEncrypt("venue/search?pageNo=\(pageNum)&pageSize=\(LGPageSize)", parameters)
+        case .discoverCarousel:
+            sign = signEncrypt("banner/list", parameters)
         }
         return [
-            "X-Request-Token":"",
+//            "X-Request-Token":"",
             "X-Request-DeviceName":UIDevice.current.modelName,
             "X-Request-Vendor":"Apple",
             "X-Request-OSVsersion":UIDevice.current.systemVersion,
             "X-Request-AppVersion":LGLocalVersion,
             "X-Request-AppType":"public",
-            "X-Request-DeviceResolution":"\(screenWidth*screenHeight)",
-            "X-Request-Time":LGApiConfig.timestamp,
+            "X-Request-DeviceResolution":"\(screenWidth)*\(screenHeight))",
+//            "X-Request-Time":LGApiConfig.timestamp,
             "X-Request-Id":LGApiConfig.platfromID,
             "X-Request-Nonce":LGApiConfig.randomNum,
             "X-Request-Sign":sign
@@ -135,12 +161,13 @@ extension LGApi:TargetType{
         var tempArr = Array<String>()
         tempArr.append(LGLocalVersion)
         tempArr.append(LGApiConfig.platfromID)
-        tempArr.append(LGApiConfig.timestamp)
+//        tempArr.append(LGApiConfig.timestamp)
         tempArr.append(LGApiConfig.randomNum)
         tempArr.append(LGApiConfig.keys.lGNetworkKey())
         tempArr += sortAllKeys(url, params)
         
         let result = tempArr.joined(separator: "&")
+        LGLog("--->\(result)")
         return result.md5
     }
     
@@ -207,11 +234,12 @@ extension MoyaProvider{
                 completion(nil)
                 return
             }
-            
             completion(returnData?.data)
         })
     }
 }
+
+
 
 
 

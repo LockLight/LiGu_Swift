@@ -13,7 +13,9 @@ class LGDiscoverViewController: LGBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        ApiLoadingProvider.request(LGApi.discoverCarousel(type: 1), model: CarouseModel.self) { [weak self] (returnData) in
+            LGLog("Hello")
+        }
     }
 
     override func didReceiveMemoryWarning() {
