@@ -137,7 +137,7 @@ extension LGApi:TargetType{
             sign = signEncrypt("banner/list", parameters)
         }
         return [
-//            "X-Request-Token":"",
+            "X-Request-Token":"",
             "X-Request-DeviceName":UIDevice.current.modelName,
             "X-Request-Vendor":"Apple",
             "X-Request-OSVsersion":UIDevice.current.systemVersion,
@@ -214,7 +214,8 @@ extension LGApi:TargetType{
 extension Response{
     func mapModel<T:HandyJSON>(_ type:T.Type) throws -> T{
         let jsonString = String(data:data,encoding:.utf8)
-        guard let model = JSONDeserializer<T>.deserializeFrom(json: jsonString) else {
+        
+        guard let model = JSONDeserializer<T>.deserializeFrom(json: jsonString, designatedPath: "result.data") else {
             throw MoyaError.jsonMapping(self)
         }
         return model
@@ -229,11 +230,14 @@ extension MoyaProvider{
                                    completion: ((_ returnData: T?) -> Void)?) -> Cancellable? {
 
         return request(target, completion: { (result) in
+
             guard let completion = completion else {return}
+
             guard let returnData = try? result.value?.mapModel(ResponseData<T>.self) else {
                 completion(nil)
                 return
             }
+            
             completion(returnData?.data)
         })
     }

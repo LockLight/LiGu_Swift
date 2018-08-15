@@ -7,31 +7,46 @@
 //
 
 import UIKit
+import LLCycleScrollView
 
 class LGDiscoverViewController: LGBaseViewController {
-
+    
+    private var bannerList = [CarouseModel]()
+    
+    private lazy var bannerView:LLCycleScrollView = {
+        let bw = LLCycleScrollView()
+        bw.backgroundColor = UIColor.background
+        bw.placeHolderImage = #imageLiteral(resourceName: "carouselFigure_placeholder")
+        bw.coverImage = #imageLiteral(resourceName: "carouselFigure_placeholder")
+        bw.pageControlActiveImage = #imageLiteral(resourceName: "ic_fax_zhishi")
+        bw.pageControlInActiveImage = #imageLiteral(resourceName: "ic_fax_zhishizhuangtai")
+        bw.imageViewContentMode = UIViewContentMode.scaleToFill
+        bw.autoScrollTimeInterval = 3.0
+        bw.lldidSelectItemAtIndex = didSelectBanner(Index:)
+        return bw
+    }()
+    
+    override func configUI() {
+        view.addSubview(bannerView)
+        bannerView.snp.makeConstraints {
+            $0.top.right.left.equalToSuperview()
+            $0.height.equalTo(140)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         ApiLoadingProvider.request(LGApi.discoverCarousel(type: 1), model: CarouseModel.self) { [weak self] (returnData) in
-            LGLog("Hello")
-        }
-    }
+//            var imgArray = Array<String>()
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        }
+        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //MARK: 点击bannner
+    private func didSelectBanner(Index:NSInteger){
+        LGLog("点击了\(Index)")
     }
-    */
-
 }
