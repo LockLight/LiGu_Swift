@@ -36,12 +36,16 @@ class LGDiscoverViewController: LGBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        ApiLoadingProvider.request(LGApi.discoverCarousel(type: 1), model: CarouseModel.self) { [weak self] (returnData) in
-//            var imgArray = Array<String>()
-
-        }
         
+        ApiLoadingProvider.requestArray(LGApi.discoverCarousel(type: 1), model: CarouseModel.self){
+            [weak self] (returnData) in
+            self?.bannerList = returnData ?? []
+            var array = Array<String>()
+            for model in (self?.bannerList)!{
+                array.append(model.imgUrl ?? "")
+            }
+            self?.bannerView.imagePaths = array
+        }
     }
     
 

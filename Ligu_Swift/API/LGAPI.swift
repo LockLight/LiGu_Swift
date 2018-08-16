@@ -215,10 +215,19 @@ extension Response{
     func mapModel<T:HandyJSON>(_ type:T.Type) throws -> T{
         let jsonString = String(data:data,encoding:.utf8)
         
-        guard let model = JSONDeserializer<T>.deserializeFrom(json: jsonString, designatedPath: "result.data") else {
+        guard let model = JSONDeserializer<T>.deserializeFrom(json: jsonString) else {
             throw MoyaError.jsonMapping(self)
         }
         return model
+    }
+    
+    func mapModelArray<T:HandyJSON>(_type:T.Type) throws -> [T]{
+        let jsonDict = Dictionary<String,Any>.constructFromJSON(json: String(data:data,encoding:.utf8)!)!
+        let jsonArrayString = jsonDict["data"] as! String
+        guard let model = [T].deserialize(from: jsonArrayString) else{
+            throw MoyaError.jsonMapping(self)
+        }
+        return model as! [T]
     }
 }
 
@@ -230,18 +239,33 @@ extension MoyaProvider{
                                    completion: ((_ returnData: T?) -> Void)?) -> Cancellable? {
 
         return request(target, completion: { (result) in
-
+            
             guard let completion = completion else {return}
-
             guard let returnData = try? result.value?.mapModel(ResponseData<T>.self) else {
                 completion(nil)
                 return
             }
+            completion(returnData?.data)
+        })
+    }
+    
+    @discardableResult
+    open func requestArray<T:HandyJSON>(_ target:Target,
+                                   model:T.Type,
+                                   completion: ((_ returnData: [T]?) -> Void)?) -> Cancellable? {
+        
+        return request(target, completion: { (result) in
             
+            guard let completion = completion else {return}
+            guard let returnData = try? result.value?.mapModel(ResponseData<[T]>.self) else {
+                completion(nil)
+                return
+            }
             completion(returnData?.data)
         })
     }
 }
+
 
 
 

@@ -30,9 +30,10 @@ struct CarouseModel:HandyJSON{
 extension Array:HandyJSON{}
 
 struct ResponseData<T: HandyJSON>: HandyJSON {
+    var totalCount:Int = 0
     var tips:String?
     var status:Int?
-    var code:String?
+    var code:Int?
     var data:T?
 }
 

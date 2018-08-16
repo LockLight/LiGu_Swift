@@ -20,7 +20,7 @@ class LGNavigationController: UINavigationController {
         let action  = Selector(("handleNavigationTransition:"))
         
         let fullScreenGesture = UIPanGestureRecognizer(target: internalTarget, action: action)
-        fullScreenGesture.delegate = self
+//        fullScreenGesture.delegate = self
         targetView.addGestureRecognizer(fullScreenGesture)
         interactiveGes.isEnabled = false
     }
@@ -32,21 +32,21 @@ class LGNavigationController: UINavigationController {
 
 }
 
-extension UINavigationController:UIGestureRecognizerDelegate{
-    
-    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        let isLeftToRight = UIApplication.shared.userInterfaceLayoutDirection == .leftToRight
-        guard let ges = gestureRecognizer as? UIPanGestureRecognizer else {
-            return true
-        }
-        if ges.translation(in: gestureRecognizer.view).x * (isLeftToRight ? 1 : -1) <= 0
-            || value(forKey: "__isTransitioning") as! Bool
-            || disablePopGesture{
-            return false
-        }
-        return viewControllers.count != 1
-    }
-}
+//extension UINavigationController:UIGestureRecognizerDelegate{
+//
+//    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+//        let isLeftToRight = UIApplication.shared.userInterfaceLayoutDirection == .leftToRight
+//        guard let ges = gestureRecognizer as? UIPanGestureRecognizer else {
+//            return true
+//        }
+//        if ges.translation(in: gestureRecognizer.view).x * (isLeftToRight ? 1 : -1) <= 0
+//            || value(forKey: "__isTransitioning") as! Bool
+//            || disablePopGesture{
+//            return false
+//        }
+//        return viewControllers.count != 1
+//    }
+//}
 
 extension UINavigationController{
     override open var preferredStatusBarStyle:UIStatusBarStyle{
