@@ -22,4 +22,21 @@ extension String {
             $0 + String(format: "%02x", digest[$1])
         }
     }
+    
+    func convertToClass<T>() -> T.Type? {
+        return StringClassConverter<T>.convert(string: self)
+    }
+}
+
+class StringClassConverter<T> {
+    
+    static func convert(string className: String) -> T.Type? {
+        guard let nameSpace = Bundle.main.infoDictionary?["CFBundleExecutable"] as? String else {
+            return nil
+        }
+        guard let aClass: T.Type = NSClassFromString("\(nameSpace).\(className)") as? T.Type else {
+            return nil
+        }
+        return aClass
+    }
 }

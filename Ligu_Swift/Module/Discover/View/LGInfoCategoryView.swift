@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class LGInfoCategoryView: UIControl {
     private lazy var lineView:UIView = {
         let lw = UIView()

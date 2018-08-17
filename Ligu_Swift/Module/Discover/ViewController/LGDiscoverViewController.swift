@@ -30,6 +30,31 @@ class LGDiscoverViewController: LGBaseViewController {
         return cgView
     }()
     
+    private lazy var scrollView:UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.delegate = self
+        scrollView.isPagingEnabled = true
+        scrollView.bounces = false
+        scrollView.showsHorizontalScrollIndicator = false
+        //添加根控制器
+        var classStr = ["LGInfoListViewController","LGAtlasViewController"]
+        var viewList  = Array<UIView>();
+        for i in 0..<classStr.count{
+            let vc = getViewController(fromString: classStr[i])!
+            self.addChildViewController(vc)
+            scrollView.addSubview(vc.view)
+            vc.didMove(toParentViewController: self)
+            viewList.append(vc.view)
+        }
+        
+        viewList.snp.distributeViewsAlong(axisType: .horizontal, fixedItemLength: 0, leadSpacing: 0, tailSpacing: 0)
+        viewList.snp.makeConstraints{
+            $0.top.bottom.size.equalToSuperview()
+        }
+        
+        return scrollView
+    }()
+    
     override func configUI() {
         view.addSubview(bannerView)
         bannerView.snp.makeConstraints {
@@ -42,6 +67,12 @@ class LGDiscoverViewController: LGBaseViewController {
             $0.top.equalTo(bannerView.snp.bottom)
             $0.right.left.equalToSuperview()
             $0.height.equalTo(44 * LGScale)
+        }
+        
+        view.addSubview(scrollView)
+        scrollView.snp.makeConstraints{
+            $0.top.equalTo(cateGoryView.snp.bottom)
+            $0.right.left.bottom.equalToSuperview()
         }
     }
     
@@ -68,5 +99,26 @@ class LGDiscoverViewController: LGBaseViewController {
     //MARK: LGCInfomationCategoryView Event
     @objc private func changePage(_ sender:LGInfoCategoryView){
         LGLog(sender.tag)
+        scrollView.scrollRectToVisible(CGRect(x:CGFloat(Int(screenWidth) * sender.tag),
+                                              y:0,
+                                              width:screenWidth,
+                                              height:scrollView.bounds.size.height), animated: true)
+    }
+    
+    //MARK: 根据string创建控制器
+    func getViewController(fromString: String) -> UIViewController? {
+        guard let viewController: UIViewController.Type = fromString.convertToClass() else {
+            return nil
+        }
+        return viewController.init()
+    }
+}
+
+extension LGDiscoverViewController:UIScrollViewDelegate{
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.isTracking || scrollView.isDragging || scrollView.isDecelerating{
+            let currentPage = NSInteger(scrollView.contentOffset.x / screenWidth)
+            cateGoryView.currentPage = currentPage
+        }
     }
 }
