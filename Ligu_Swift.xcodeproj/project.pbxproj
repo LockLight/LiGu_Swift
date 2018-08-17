@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CD01FCC221255A7C0069BDFF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD01FCC121255A7B0069BDFF /* Default-568h@2x.png */; };
+		CD01FCC4212697F40069BDFF /* LGApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01FCC3212697F40069BDFF /* LGApiManager.swift */; };
 		CD0DDE62291683AA19BD1D60 /* Pods_Ligu_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0777BE7A7DB36C6292B81F /* Pods_Ligu_Swift.framework */; };
 		CDB734D721182E6200C16E41 /* LGAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB734D621182E6200C16E41 /* LGAPI.swift */; };
 		CDB734D92118477600C16E41 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB734D82118477600C16E41 /* UIDeviceExtension.swift */; };
@@ -55,6 +56,7 @@
 		B193C2DD10D8F0FD3F06F3A3 /* Pods-Ligu_Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ligu_Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ligu_Swift/Pods-Ligu_Swift.release.xcconfig"; sourceTree = "<group>"; };
 		BF0777BE7A7DB36C6292B81F /* Pods_Ligu_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ligu_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD01FCC121255A7B0069BDFF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		CD01FCC3212697F40069BDFF /* LGApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGApiManager.swift; sourceTree = "<group>"; };
 		CDB734D621182E6200C16E41 /* LGAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGAPI.swift; sourceTree = "<group>"; };
 		CDB734D82118477600C16E41 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		CDBCE5A3211986EC0083CFE4 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				CDB734D621182E6200C16E41 /* LGAPI.swift */,
+				CD01FCC3212697F40069BDFF /* LGApiManager.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				CDCD88402112DEEA00477F3E /* LGTabbarController.swift in Sources */,
 				CDCD884D2113030D00477F3E /* LGNavigationController.swift in Sources */,
 				CDCD88652113EF3500477F3E /* LGSocialViewController.swift in Sources */,
+				CD01FCC4212697F40069BDFF /* LGApiManager.swift in Sources */,
 				CDCD880E2112DD6600477F3E /* AppDelegate.swift in Sources */,
 				CDCD88612113EF0F00477F3E /* LGDiscoverViewController.swift in Sources */,
 				CDCD885F2113EEDB00477F3E /* LGVenueViewController.swift in Sources */,

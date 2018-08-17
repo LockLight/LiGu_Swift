@@ -18,8 +18,6 @@ class LGDiscoverViewController: LGBaseViewController {
         bw.backgroundColor = UIColor.background
         bw.placeHolderImage = #imageLiteral(resourceName: "carouselFigure_placeholder")
         bw.coverImage = #imageLiteral(resourceName: "carouselFigure_placeholder")
-        bw.pageControlActiveImage = #imageLiteral(resourceName: "ic_fax_zhishi")
-        bw.pageControlInActiveImage = #imageLiteral(resourceName: "ic_fax_zhishizhuangtai")
         bw.imageViewContentMode = UIViewContentMode.scaleToFill
         bw.autoScrollTimeInterval = 3.0
         bw.lldidSelectItemAtIndex = didSelectBanner(Index:)
@@ -30,7 +28,7 @@ class LGDiscoverViewController: LGBaseViewController {
         view.addSubview(bannerView)
         bannerView.snp.makeConstraints {
             $0.top.right.left.equalToSuperview()
-            $0.height.equalTo(140)
+            $0.height.equalTo(140 * LGScale)
         }
     }
     

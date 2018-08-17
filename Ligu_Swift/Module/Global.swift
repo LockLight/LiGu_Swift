@@ -14,6 +14,7 @@ import Kingfisher
 
 let screenWidth  =  UIScreen.main.bounds.width
 let screenHeight =  UIScreen.main.bounds.height
+let LGScale = screenHeight/667
 
 ///http://192.168.2.248:8300/api
 let LGBaseUrl = "https://api.ligusports.com/api"
