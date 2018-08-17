@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CD01FCC221255A7C0069BDFF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD01FCC121255A7B0069BDFF /* Default-568h@2x.png */; };
 		CD01FCC4212697F40069BDFF /* LGApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01FCC3212697F40069BDFF /* LGApiManager.swift */; };
+		CD01FCC621269D060069BDFF /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01FCC521269D060069BDFF /* UIButtonExtension.swift */; };
+		CD01FCCA21269F320069BDFF /* LGInfoCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01FCC921269F320069BDFF /* LGInfoCategoryView.swift */; };
 		CD0DDE62291683AA19BD1D60 /* Pods_Ligu_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0777BE7A7DB36C6292B81F /* Pods_Ligu_Swift.framework */; };
 		CDB734D721182E6200C16E41 /* LGAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB734D621182E6200C16E41 /* LGAPI.swift */; };
 		CDB734D92118477600C16E41 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB734D82118477600C16E41 /* UIDeviceExtension.swift */; };
@@ -57,6 +59,8 @@
 		BF0777BE7A7DB36C6292B81F /* Pods_Ligu_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ligu_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD01FCC121255A7B0069BDFF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CD01FCC3212697F40069BDFF /* LGApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGApiManager.swift; sourceTree = "<group>"; };
+		CD01FCC521269D060069BDFF /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		CD01FCC921269F320069BDFF /* LGInfoCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGInfoCategoryView.swift; sourceTree = "<group>"; };
 		CDB734D621182E6200C16E41 /* LGAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGAPI.swift; sourceTree = "<group>"; };
 		CDB734D82118477600C16E41 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		CDBCE5A3211986EC0083CFE4 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
@@ -237,6 +241,7 @@
 				CDBCE5A3211986EC0083CFE4 /* DictionaryExtension.swift */,
 				CDBCE5A52119897B0083CFE4 /* ArrayExtension.swift */,
 				CDBCE5A7211AC13B0083CFE4 /* StringExtension.swift */,
+				CD01FCC521269D060069BDFF /* UIButtonExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 		CDCD88562113EE3500477F3E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CD01FCC921269F320069BDFF /* LGInfoCategoryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -564,6 +570,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDCD88402112DEEA00477F3E /* LGTabbarController.swift in Sources */,
+				CD01FCC621269D060069BDFF /* UIButtonExtension.swift in Sources */,
 				CDCD884D2113030D00477F3E /* LGNavigationController.swift in Sources */,
 				CDCD88652113EF3500477F3E /* LGSocialViewController.swift in Sources */,
 				CD01FCC4212697F40069BDFF /* LGApiManager.swift in Sources */,
@@ -575,6 +582,7 @@
 				CDBCE5A8211AC13B0083CFE4 /* StringExtension.swift in Sources */,
 				CDCD884B2112F4D900477F3E /* LGBaseViewController.swift in Sources */,
 				CDCD88672113EF4400477F3E /* LGMineViewController.swift in Sources */,
+				CD01FCCA21269F320069BDFF /* LGInfoCategoryView.swift in Sources */,
 				CDCD88432112EA3700477F3E /* UIColorExtension.swift in Sources */,
 				CDBCE5AC211AD4430083CFE4 /* LGModel.swift in Sources */,
 				CDBCE5A62119897B0083CFE4 /* ArrayExtension.swift in Sources */,
