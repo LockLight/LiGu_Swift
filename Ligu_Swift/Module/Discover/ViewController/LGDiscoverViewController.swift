@@ -24,11 +24,24 @@ class LGDiscoverViewController: LGBaseViewController {
         return bw
     }()
     
+    private lazy var cateGoryView:LGInfoCategoryView = {
+        let cgView = LGInfoCategoryView()
+        cgView.addTarget(self, action: #selector(changePage(_:)), for: .valueChanged)
+        return cgView
+    }()
+    
     override func configUI() {
         view.addSubview(bannerView)
         bannerView.snp.makeConstraints {
             $0.top.right.left.equalToSuperview()
             $0.height.equalTo(140 * LGScale)
+        }
+        
+        view.addSubview(cateGoryView)
+        cateGoryView.snp.makeConstraints{
+            $0.top.equalTo(bannerView.snp.bottom)
+            $0.right.left.equalToSuperview()
+            $0.height.equalTo(44 * LGScale)
         }
     }
     
@@ -50,5 +63,10 @@ class LGDiscoverViewController: LGBaseViewController {
     //MARK: 点击bannner
     private func didSelectBanner(Index:NSInteger){
         LGLog("点击了\(Index)")
+    }
+    
+    //MARK: LGCInfomationCategoryView Event
+    @objc private func changePage(_ sender:LGInfoCategoryView){
+        LGLog(sender.tag)
     }
 }
