@@ -37,21 +37,17 @@ class LGDiscoverViewController: LGBaseViewController {
         scrollView.bounces = false
         scrollView.showsHorizontalScrollIndicator = false
         //添加根控制器
-        var classStr = ["LGInfoListViewController","LGAtlasViewController"]
-        var viewList  = Array<UIView>();
+        let classStr = ["LGInfoListViewController","LGAtlasViewController"]
+        scrollView.contentSize = CGSize(width: CGFloat(classStr.count) * screenWidth, height:0)
         for i in 0..<classStr.count{
             let vc = getViewController(fromString: classStr[i])!
-            self.addChildViewController(vc)
+            addChildViewController(vc)
             scrollView.addSubview(vc.view)
             vc.didMove(toParentViewController: self)
-            viewList.append(vc.view)
+            
+            vc.view.frame = CGRect(x: CGFloat(i) * screenWidth, y: 0,
+                                 width: screenWidth, height: scrollView.bounds.size.height)
         }
-        
-        viewList.snp.distributeViewsAlong(axisType: .horizontal, fixedItemLength: 0, leadSpacing: 0, tailSpacing: 0)
-        viewList.snp.makeConstraints{
-            $0.top.bottom.size.equalToSuperview()
-        }
-        
         return scrollView
     }()
     
@@ -82,11 +78,9 @@ class LGDiscoverViewController: LGBaseViewController {
         ApiLoadingProvider.requestArray(LGApi.discoverCarousel(type: 1), model: CarouseModel.self){
             [weak self] (returnData) in
             self?.bannerList = returnData ?? []
-            var array = Array<String>()
-            for model in (self?.bannerList)!{
-                array.append(model.imgUrl ?? "")
+            if let array = self?.bannerList.map({model in return model.imgUrl ?? "" }){
+                self?.bannerView.imagePaths = array
             }
-            self?.bannerView.imagePaths = array
         }
     }
     
@@ -98,11 +92,7 @@ class LGDiscoverViewController: LGBaseViewController {
     
     //MARK: LGCInfomationCategoryView Event
     @objc private func changePage(_ sender:LGInfoCategoryView){
-        LGLog(sender.tag)
-        scrollView.scrollRectToVisible(CGRect(x:CGFloat(Int(screenWidth) * sender.tag),
-                                              y:0,
-                                              width:screenWidth,
-                                              height:scrollView.bounds.size.height), animated: true)
+        scrollView.setContentOffset(CGPoint(x: screenWidth * CGFloat(sender.tag), y: 0), animated: true)
     }
     
     //MARK: 根据string创建控制器
