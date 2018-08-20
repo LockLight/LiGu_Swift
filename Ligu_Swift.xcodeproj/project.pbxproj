@@ -37,6 +37,7 @@
 		CDCD88632113EF2100477F3E /* LGMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD88622113EF2100477F3E /* LGMatchViewController.swift */; };
 		CDCD88652113EF3500477F3E /* LGSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD88642113EF3500477F3E /* LGSocialViewController.swift */; };
 		CDCD88672113EF4400477F3E /* LGMineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD88662113EF4400477F3E /* LGMineViewController.swift */; };
+		CDCE63EB212AA1B700BAAEB0 /* LGBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCE63EA212AA1B700BAAEB0 /* LGBaseTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		CDCD88622113EF2100477F3E /* LGMatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGMatchViewController.swift; sourceTree = "<group>"; };
 		CDCD88642113EF3500477F3E /* LGSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGSocialViewController.swift; sourceTree = "<group>"; };
 		CDCD88662113EF4400477F3E /* LGMineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGMineViewController.swift; sourceTree = "<group>"; };
+		CDCE63EA212AA1B700BAAEB0 /* LGBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGBaseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +243,7 @@
 		CDCD883D2112DE8200477F3E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CDCE63EA212AA1B700BAAEB0 /* LGBaseTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				CD01FCCE2126A7A80069BDFF /* ConstraintArrayDSL.swift in Sources */,
 				CDCD88432112EA3700477F3E /* UIColorExtension.swift in Sources */,
 				CDBCE5AC211AD4430083CFE4 /* LGModel.swift in Sources */,
+				CDCE63EB212AA1B700BAAEB0 /* LGBaseTableViewCell.swift in Sources */,
 				CDBCE5A62119897B0083CFE4 /* ArrayExtension.swift in Sources */,
 				CD01FCD22126B7D50069BDFF /* LGInfoListViewController.swift in Sources */,
 				CDB734D92118477600C16E41 /* UIDeviceExtension.swift in Sources */,

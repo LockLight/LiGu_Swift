@@ -8,6 +8,20 @@
 
 import HandyJSON
 
+struct newsListModel:HandyJSON {
+    var title:String?
+    var isUseFul:Int?
+    var articleTypeId:Int?
+    var isShow:Int?
+    var thumImg:String?
+    var coverImg:String?
+    var createTime:String?
+    var usefulCount:Int?
+    var browseCount:Int?
+    var typeName:Int?
+    var isTop1:NSInteger?
+}
+
 struct HotCommandVennueModel:HandyJSON{
     var businessCirclesName:String?
     var description:String?
