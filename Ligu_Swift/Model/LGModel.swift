@@ -22,6 +22,15 @@ struct newsListModel:HandyJSON {
     var isTop1:NSInteger?
 }
 
+struct AtlasListModel:HandyJSON {
+    var atlasID:String?
+    var coverImg:String?
+    var createTime:String?
+    var name:String?
+    var modifyTime:String?
+    var imageCount:String?
+}
+
 struct HotCommandVennueModel:HandyJSON{
     var businessCirclesName:String?
     var description:String?

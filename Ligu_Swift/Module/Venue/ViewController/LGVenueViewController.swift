@@ -15,7 +15,7 @@ class LGVenueViewController: LGBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        ApiLoadingProvider.request(LGApi.HotCommandVenue(city: "深圳", lon: "22.284681", lat: "114.158177", orderBy: 1, pageNum: 1), model:HotCommandVennueModel.self) { [weak self] (returnData) in
+//        ApiLoadingProvider.requestArray(LGApi.HotCommandVenue(city: "深圳", lon: "22.284681", lat: "114.158177", orderBy: 1, pageNum: 1), model:HotCommandVennueModel.self) { [weak self] (returnData) in
 //            LGLog("Hello")
 //
 //        }

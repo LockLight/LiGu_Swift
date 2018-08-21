@@ -45,8 +45,10 @@ class LGDiscoverViewController: LGBaseViewController {
             scrollView.addSubview(vc.view)
             vc.didMove(toParentViewController: self)
             
-            vc.view.frame = CGRect(x: CGFloat(i) * screenWidth, y: 0,
-                                 width: screenWidth, height: scrollView.bounds.size.height)
+            vc.view.snp.makeConstraints{
+                $0.left.equalTo(scrollView.snp.left).offset(CGFloat(i)*screenWidth)
+                $0.top.width.height.equalToSuperview()
+            }
         }
         return scrollView
     }()
@@ -57,7 +59,7 @@ class LGDiscoverViewController: LGBaseViewController {
             $0.top.right.left.equalToSuperview()
             $0.height.equalTo(140 * LGScale)
         }
-        
+    
         view.addSubview(cateGoryView)
         cateGoryView.snp.makeConstraints{
             $0.top.equalTo(bannerView.snp.bottom)

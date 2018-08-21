@@ -26,6 +26,8 @@ fileprivate struct LGApiConfig{
 enum LGApi {
     case HotCommandVenue(city:String,lon:String,lat:String,orderBy:Int,pageNum:Int) //热门推荐场馆
     case discoverCarousel(type:Int)  //发现轮播资讯
+//    case newsList(typeID:String,page:Int) //发现资讯列表
+    case atlasList(pageNum:Int)   //获取图集列表
 }
 
 extension LGApi:TargetType{
@@ -39,13 +41,19 @@ extension LGApi:TargetType{
             return "venue/search?pageNo=\(pageNum)&pageSize=\(LGPageSize)"
         case .discoverCarousel:
             return "banner/list"
+//        case .newsList:
+//            return "article/find/list"
+        case .atlasList:
+            return "altas/list"
         }
+        
     }
 
     var method: Moya.Method{
         switch self {
         case .HotCommandVenue: return .post
         case .discoverCarousel: return .get
+        case .atlasList:        return .get
         }
     }
 
@@ -61,12 +69,14 @@ extension LGApi:TargetType{
                    ]
         case .discoverCarousel(let type):
             return ["type":type]
+        case .atlasList(let pageNum):
+            return ["pageNo":pageNum,"pageSize":LGPageSize]
         }
     }
 
     var task: Task{
         switch self {
-        case .HotCommandVenue,.discoverCarousel:
+        case .HotCommandVenue,.discoverCarousel,.atlasList:
             return .requestParameters(parameters:parameters, encoding: URLEncoding.default)
         }
     }
@@ -78,6 +88,8 @@ extension LGApi:TargetType{
             sign = signEncrypt("venue/search?pageNo=\(pageNum)&pageSize=\(LGPageSize)", parameters)
         case .discoverCarousel:
             sign = signEncrypt("banner/list", parameters)
+        case .atlasList(let pageNum):
+            sign = signEncrypt("altas/list?pageNo=\(pageNum)&pageSize=\(LGPageSize)", parameters)
         }
         return [
             "X-Request-Token":"",
