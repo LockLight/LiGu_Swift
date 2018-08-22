@@ -27,7 +27,11 @@ struct AtlasListModel:HandyJSON {
     var coverImg:String?
     var createTime:String?
     var name:String?
-    var modifyTime:String?
+    var modifyTime:String?{
+        get{
+            return DateClass.timeStampToString(self.modifyTime!, "yyyy/MM/dd")
+        }
+    }
     var imageCount:String?
 }
 

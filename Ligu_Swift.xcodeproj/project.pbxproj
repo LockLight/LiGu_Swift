@@ -42,6 +42,9 @@
 		CDCE63F0212BB21A00BAAEB0 /* LGAtlasListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCE63EE212BB21A00BAAEB0 /* LGAtlasListCell.swift */; };
 		CDCE63F1212BB21A00BAAEB0 /* LGAtlasListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDCE63EF212BB21A00BAAEB0 /* LGAtlasListCell.xib */; };
 		CDCE63F3212BF5EA00BAAEB0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCE63F2212BF5EA00BAAEB0 /* UIViewExtension.swift */; };
+		CDCE63F5212D47AE00BAAEB0 /* DateClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCE63F4212D47AE00BAAEB0 /* DateClass.swift */; };
+		CDCE63F9212D519A00BAAEB0 /* LGRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCE63F8212D519A00BAAEB0 /* LGRefresh.swift */; };
+		CDCE63FC212D52AF00BAAEB0 /* LGEmptyDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCE63FB212D52AF00BAAEB0 /* LGEmptyDataSet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +109,9 @@
 		CDCE63EE212BB21A00BAAEB0 /* LGAtlasListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGAtlasListCell.swift; sourceTree = "<group>"; };
 		CDCE63EF212BB21A00BAAEB0 /* LGAtlasListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGAtlasListCell.xib; sourceTree = "<group>"; };
 		CDCE63F2212BF5EA00BAAEB0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		CDCE63F4212D47AE00BAAEB0 /* DateClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateClass.swift; sourceTree = "<group>"; };
+		CDCE63F8212D519A00BAAEB0 /* LGRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGRefresh.swift; sourceTree = "<group>"; };
+		CDCE63FB212D52AF00BAAEB0 /* LGEmptyDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGEmptyDataSet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,8 @@
 		CD01FCCB2126A7280069BDFF /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				CDCE63FD212D52B800BAAEB0 /* EmptyDataSet */,
+				CDCE63FA212D519D00BAAEB0 /* Refresh */,
 				CD01FCCC2126A75B0069BDFF /* SnpKitExtension */,
 			);
 			path = Component;
@@ -278,6 +286,7 @@
 				CDBCE5A7211AC13B0083CFE4 /* StringExtension.swift */,
 				CD01FCC521269D060069BDFF /* UIButtonExtension.swift */,
 				CDCE63F2212BF5EA00BAAEB0 /* UIViewExtension.swift */,
+				CDCE63F4212D47AE00BAAEB0 /* DateClass.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -321,7 +330,6 @@
 		CDCD88492112F43700477F3E /* Mine */ = {
 			isa = PBXGroup;
 			children = (
-				CDCD885D2113EE6D00477F3E /* View */,
 				CDCD885C2113EE6C00477F3E /* ViewController */,
 			);
 			path = Mine;
@@ -400,11 +408,20 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		CDCD885D2113EE6D00477F3E /* View */ = {
+		CDCE63FA212D519D00BAAEB0 /* Refresh */ = {
 			isa = PBXGroup;
 			children = (
+				CDCE63F8212D519A00BAAEB0 /* LGRefresh.swift */,
 			);
-			path = View;
+			path = Refresh;
+			sourceTree = "<group>";
+		};
+		CDCE63FD212D52B800BAAEB0 /* EmptyDataSet */ = {
+			isa = PBXGroup;
+			children = (
+				CDCE63FB212D52AF00BAAEB0 /* LGEmptyDataSet.swift */,
+			);
+			path = EmptyDataSet;
 			sourceTree = "<group>";
 		};
 		D0B5463D9B528F5103CFE60F /* Frameworks */ = {
@@ -616,11 +633,13 @@
 				CD01FCC4212697F40069BDFF /* LGApiManager.swift in Sources */,
 				CDCD880E2112DD6600477F3E /* AppDelegate.swift in Sources */,
 				CDCD88612113EF0F00477F3E /* LGDiscoverViewController.swift in Sources */,
+				CDCE63F9212D519A00BAAEB0 /* LGRefresh.swift in Sources */,
 				CDCD885F2113EEDB00477F3E /* LGVenueViewController.swift in Sources */,
 				CDCD884F211309A700477F3E /* UIImageExtensions.swift in Sources */,
 				CDB734D721182E6200C16E41 /* LGAPI.swift in Sources */,
 				CDCE63ED212BAA2D00BAAEB0 /* LGBaseNibTableViewCell.swift in Sources */,
 				CDBCE5A8211AC13B0083CFE4 /* StringExtension.swift in Sources */,
+				CDCE63F5212D47AE00BAAEB0 /* DateClass.swift in Sources */,
 				CDCD884B2112F4D900477F3E /* LGBaseViewController.swift in Sources */,
 				CD01FCD42126B82D0069BDFF /* LGAtlasViewController.swift in Sources */,
 				CD01FCD02126A7D20069BDFF /* ConstraintArray+Extensions.swift in Sources */,
@@ -630,6 +649,7 @@
 				CD01FCCE2126A7A80069BDFF /* ConstraintArrayDSL.swift in Sources */,
 				CDCD88432112EA3700477F3E /* UIColorExtension.swift in Sources */,
 				CDBCE5AC211AD4430083CFE4 /* LGModel.swift in Sources */,
+				CDCE63FC212D52AF00BAAEB0 /* LGEmptyDataSet.swift in Sources */,
 				CDCE63EB212AA1B700BAAEB0 /* LGBaseTableViewCell.swift in Sources */,
 				CDBCE5A62119897B0083CFE4 /* ArrayExtension.swift in Sources */,
 				CD01FCD22126B7D50069BDFF /* LGInfoListViewController.swift in Sources */,
