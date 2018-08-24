@@ -23,9 +23,9 @@ class LGAtlasViewController: LGBaseViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.rowHeight = 243
         tableView.register(cellType: LGAtlasListCell.self)
-        tableView.LGHead = LGRefreshAutoHeader{[weak self] in self?.loadData();  self?.page = 0 }
-        tableView.LGFoot = LGRefreshFooter{[weak self] in self?.loadData(); self?.page += 1 }
-        tableView.LGempty = LGEmptyView{[weak self] in self?.loadData()}
+        tableView.LGHead = LGRefreshAutoHeader{[weak self] in self?.loadData(more: false)}
+        tableView.LGFoot = LGRefreshFooter{[weak self] in self?.loadData(more: true)}
+        tableView.LGempty = LGEmptyView{[weak self] in self?.loadData(more: false)}
         return tableView
     }()
 
@@ -33,7 +33,7 @@ class LGAtlasViewController: LGBaseViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.random
         
-        loadData()
+        loadData(more: false)
         
     }
     
@@ -42,24 +42,21 @@ class LGAtlasViewController: LGBaseViewController {
         tableView.snp.makeConstraints{ $0.edges.equalTo(self.view.LGsnp.edges) }
     }
     
-    func loadData(){
+    func loadData(more:Bool){
+        page = more ? (page + 1) : 0
         ApiLoadingProvider.requestArray(LGApi.atlasList(pageNum: page), model:AtlasListModel.self) { (returnData) in
-//            if self.page == 0 { return self.atlasList.removeAll()}
-//            self.atlasList.append(contentsOf:returnData ?? [])
-//
-//            self.tableView.LGHead.endRefreshing()
-//
-//            if self.atlasList.count > 0{
-//                self.tableView.LGFoot.isHidden = false
-//                if self.atlasList.count < LGPageSize{
-//                    self.tableView.LGFoot.endRefreshingWithNoMoreData()
-//                }
-//            }else{
-//                self.tableView.LGFoot.isHidden = true
-//            }
-//            self.tableView.LGempty?.allowShow = true
-            self.atlasList = returnData ?? []
+
+            self.tableView.LGHead.endRefreshing()
+            self.tableView.LGempty?.allowShow = true
             
+            if (returnData?.count)! < LGPageSize{
+                self.tableView.LGFoot.endRefreshingWithNoMoreData()
+            }else{
+                self.tableView.LGFoot.endRefreshing()
+            }
+            
+            if more == false { self.atlasList.removeAll()}
+            self.atlasList.append(contentsOf:returnData ?? [])
             self.tableView.reloadData()
         }
     }

@@ -30,6 +30,7 @@ extension UIScrollView {
 class LGEmptyView: EmptyDataSetSource, EmptyDataSetDelegate {
     
     var image: UIImage?
+    var title: NSAttributedString?
     
     var allowShow: Bool = false
     var verticalOffset: CGFloat = 0
@@ -37,8 +38,12 @@ class LGEmptyView: EmptyDataSetSource, EmptyDataSetDelegate {
     
     private var tapClosure: (() -> Void)?
     
-    init(image: UIImage? = UIImage(named: "nodata"), verticalOffset: CGFloat = 0, tapClosure: (() -> Void)?) {
+    init(image: UIImage? = UIImage(named: "noData_common"),
+         title: NSAttributedString? = NSAttributedString.init(string: "暂无数据"),
+         verticalOffset: CGFloat = 0,
+         tapClosure: (() -> Void)?) {
         self.image = image
+        self.title = title
         self.verticalOffset = verticalOffset
         self.tapClosure = tapClosure
     }
@@ -49,6 +54,10 @@ class LGEmptyView: EmptyDataSetSource, EmptyDataSetDelegate {
     
     internal func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
         return image
+    }
+    
+    internal func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        return title
     }
     
     internal func emptyDataSetShouldDisplay(_ scrollView: UIScrollView) -> Bool {

@@ -31,9 +31,9 @@ class LGAtlasListCell: LGBaseNibTableViewCell {
         didSet{
             guard let model = model else { return }
             coverImageView.kf.setImage(urlString: model.coverImg)
-            imgCountLabel.text = "\(String(describing: model.imageCount))张"
+            imgCountLabel.text = "\(String(describing: model.imageCount!))张"
             titleLabel.text = model.name
-            lastTimeLabel.text = ""
+            lastTimeLabel.text = "最近更新\(DateClass.timeStampToString(model.modifyTime!, "yyyy/MM/dd"))"
         }
     }
 
