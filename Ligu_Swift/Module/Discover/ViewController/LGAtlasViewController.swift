@@ -44,20 +44,22 @@ class LGAtlasViewController: LGBaseViewController {
     
     func loadData(more:Bool){
         page = more ? (page + 1) : 0
-        ApiLoadingProvider.requestArray(LGApi.atlasList(pageNum: page), model:AtlasListModel.self) { (returnData) in
-
+        ApiLoadingProvider.requestArray(LGApi.atlasList(pageNum: page), model:AtlasListModel.self, success: {
+            (returnData) in
             self.tableView.LGHead.endRefreshing()
             self.tableView.LGempty?.allowShow = true
             
-            if (returnData?.count)! < LGPageSize{
+            if (returnData.count) < LGPageSize{
                 self.tableView.LGFoot.endRefreshingWithNoMoreData()
             }else{
                 self.tableView.LGFoot.endRefreshing()
             }
             
             if more == false { self.atlasList.removeAll()}
-            self.atlasList.append(contentsOf:returnData ?? [])
+            self.atlasList.append(contentsOf:returnData )
             self.tableView.reloadData()
+        }) { (error) in
+            LGLog("Error...\(error)")
         }
     }
 }

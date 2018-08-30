@@ -62,7 +62,7 @@ public struct ConstraintPriority : ExpressibleByFloatLiteral, Equatable, Stridea
     }
     
     public static func ==(lhs: ConstraintPriority, rhs: ConstraintPriority) -> Bool {
-        return lhs.value == rhs.value
+        return lhs.value == rhs.value 
     }
 
     // MARK: Strideable

@@ -70,19 +70,18 @@ let ApiLoadingProvider = MoyaProvider<LGApi>(requestClosure: timeoutClosure, plu
 
 /// EZSE: 模型解析
 extension Response{
-    func mapModel<T:HandyJSON>(_ type:T.Type) throws -> T{
+    func mapModel<T:HandyJSON>(_ type:T.Type,path:String? = nil) throws -> T{
         let jsonString = String(data:data,encoding:.utf8)
-        
-        guard let model = JSONDeserializer<T>.deserializeFrom(json: jsonString) else {
+        guard let model = JSONDeserializer<T>.deserializeFrom(json: jsonString,designatedPath:path) else {
             throw MoyaError.jsonMapping(self)
         }
         return model
     }
     
-    func mapModelArray<T:HandyJSON>(_type:T.Type) throws -> [T]{
+    func mapModelArray<T:HandyJSON>(_type:T.Type,path:String? = nil) throws -> [T]{
         let jsonDict = Dictionary<String,Any>.constructFromJSON(json: String(data:data,encoding:.utf8)!)!
         let jsonArrayString = jsonDict["data"] as! String
-        guard let model = [T].deserialize(from: jsonArrayString) else{
+        guard let model = [T].deserialize(from: jsonArrayString,designatedPath:path) else{
             throw MoyaError.jsonMapping(self)
         }
         return model as! [T]
@@ -94,32 +93,40 @@ extension MoyaProvider{
     @discardableResult
     open func request<T:HandyJSON>(_ target:Target,
                                    model:T.Type,
-                                   completion: ((_ returnData: T?) -> Void)?) -> Cancellable? {
+                                   path:String? = nil,
+                                   success: ((_ returnData: T) -> ())?,
+                                   failure: ((_ Error: MoyaError) -> ())?) -> Cancellable? {
         
         return request(target, completion: { (result) in
-            
-            guard let completion = completion else {return}
-            guard let returnData = try? result.value?.mapModel(ResponseData<T>.self) else {
-                completion(nil)
+            if let error = result.error {
+                failure?(error)
                 return
             }
-            completion(returnData?.data)
+            guard let returnData = try? result.value?.mapModel(ResponseData<T>.self,path:path) else {
+                failure?(MoyaError.jsonMapping(result.value!))
+                return
+            }
+            success?((returnData?.data)!)
         })
     }
     
     @discardableResult
     open func requestArray<T:HandyJSON>(_ target:Target,
                                         model:T.Type,
-                                        completion: ((_ returnData: [T]?) -> Void)?) -> Cancellable? {
+                                        path:String? = nil,
+                                        success: ((_ returnData: [T]) -> ())?,
+                                        failure: ((_ Error: MoyaError) -> ())?) -> Cancellable? {
         
         return request(target, completion: { (result) in
-            
-            guard let completion = completion else {return}
-            guard let returnData = try? result.value?.mapModel(ResponseData<[T]>.self) else {
-                completion(nil)
+            if let error = result.error {
+                failure?(error)
                 return
             }
-            completion(returnData?.data)
+            guard let returnData = try? result.value?.mapModel(ResponseData<[T]>.self,path:path) else {
+                failure?(MoyaError.jsonMapping(result.value!))
+                return
+            }
+            success?((returnData?.data)!)
         })
     }
 }
