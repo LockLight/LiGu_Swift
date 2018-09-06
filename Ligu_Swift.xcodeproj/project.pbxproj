@@ -15,6 +15,7 @@
 		CD01FCD22126B7D50069BDFF /* LGInfoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01FCD12126B7D50069BDFF /* LGInfoListViewController.swift */; };
 		CD01FCD42126B82D0069BDFF /* LGAtlasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01FCD32126B82D0069BDFF /* LGAtlasViewController.swift */; };
 		CD0DDE62291683AA19BD1D60 /* Pods_Ligu_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0777BE7A7DB36C6292B81F /* Pods_Ligu_Swift.framework */; };
+		CD8EE72B21410E75000AF3C9 /* StartupCommandsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8EE72A21410E75000AF3C9 /* StartupCommandsBuilder.swift */; };
 		CDB734D721182E6200C16E41 /* LGAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB734D621182E6200C16E41 /* LGAPI.swift */; };
 		CDB734D92118477600C16E41 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB734D82118477600C16E41 /* UIDeviceExtension.swift */; };
 		CDBCE5A4211986EC0083CFE4 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCE5A3211986EC0083CFE4 /* DictionaryExtension.swift */; };
@@ -75,6 +76,7 @@
 		CD01FCCF2126A7D20069BDFF /* ConstraintArray+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConstraintArray+Extensions.swift"; sourceTree = "<group>"; };
 		CD01FCD12126B7D50069BDFF /* LGInfoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGInfoListViewController.swift; sourceTree = "<group>"; };
 		CD01FCD32126B82D0069BDFF /* LGAtlasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGAtlasViewController.swift; sourceTree = "<group>"; };
+		CD8EE72A21410E75000AF3C9 /* StartupCommandsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupCommandsBuilder.swift; sourceTree = "<group>"; };
 		CDB734D621182E6200C16E41 /* LGAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGAPI.swift; sourceTree = "<group>"; };
 		CDB734D82118477600C16E41 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		CDBCE5A3211986EC0083CFE4 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 			children = (
 				CDCD880D2112DD6600477F3E /* AppDelegate.swift */,
 				CDCD88522113E81100477F3E /* Global.swift */,
+				CD8EE72A21410E75000AF3C9 /* StartupCommandsBuilder.swift */,
 				CDCD883C2112DE7900477F3E /* Base */,
 				CDCD88442112F3B600477F3E /* Venue */,
 				CDCD88452112F3DF00477F3E /* Discover */,
@@ -629,6 +632,7 @@
 				CDCD88402112DEEA00477F3E /* LGTabbarController.swift in Sources */,
 				CD01FCC621269D060069BDFF /* UIButtonExtension.swift in Sources */,
 				CDCD884D2113030D00477F3E /* LGNavigationController.swift in Sources */,
+				CD8EE72B21410E75000AF3C9 /* StartupCommandsBuilder.swift in Sources */,
 				CDCD88652113EF3500477F3E /* LGSocialViewController.swift in Sources */,
 				CD01FCC4212697F40069BDFF /* LGApiManager.swift in Sources */,
 				CDCD880E2112DD6600477F3E /* AppDelegate.swift in Sources */,
