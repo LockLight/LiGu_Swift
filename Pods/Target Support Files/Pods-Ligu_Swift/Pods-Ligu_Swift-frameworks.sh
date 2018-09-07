@@ -91,6 +91,7 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
   install_framework "$BUILT_PRODUCTS_DIR/EmptyDataSet-Swift/EmptyDataSet_Swift.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FDFullscreenPopGesture/FDFullscreenPopGesture.framework"
   install_framework "$BUILT_PRODUCTS_DIR/HMSegmentedControl/HMSegmentedControl.framework"
   install_framework "$BUILT_PRODUCTS_DIR/HandyJSON/HandyJSON.framework"
   install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
@@ -104,10 +105,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Reusable/Reusable.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SnapKit/SnapKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Then/Then.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/URLNavigator/URLNavigator.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
   install_framework "$BUILT_PRODUCTS_DIR/EmptyDataSet-Swift/EmptyDataSet_Swift.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FDFullscreenPopGesture/FDFullscreenPopGesture.framework"
   install_framework "$BUILT_PRODUCTS_DIR/HMSegmentedControl/HMSegmentedControl.framework"
   install_framework "$BUILT_PRODUCTS_DIR/HandyJSON/HandyJSON.framework"
   install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
@@ -121,6 +124,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Reusable/Reusable.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SnapKit/SnapKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Then/Then.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/URLNavigator/URLNavigator.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

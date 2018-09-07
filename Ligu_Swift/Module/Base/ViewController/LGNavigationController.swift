@@ -7,46 +7,45 @@
 //
 
 import UIKit
+import FDFullscreenPopGesture
 
 class LGNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let interactiveGes = interactivePopGestureRecognizer else { return }
-        guard let targetView = interactiveGes.view else { return }
-        guard let internalTargets = interactiveGes.value(forKey: "targets") as? [NSObject] else {return}
-        guard let internalTarget = internalTargets.first?.value(forKey: "target") else { return }
-        let action  = Selector(("handleNavigationTransition:"))
-        
-        let fullScreenGesture = UIPanGestureRecognizer(target: internalTarget, action: action)
-//        fullScreenGesture.delegate = self
-        targetView.addGestureRecognizer(fullScreenGesture)
-        interactiveGes.isEnabled = false
+		fd_fullscreenPopGestureRecognizer.isEnabled = true
     }
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         if viewControllers.count > 0 { viewController.hidesBottomBarWhenPushed = true }
         super.pushViewController(viewController, animated: animated)
     }
-
+	
+	// MARK: - 全屏滑动返回(不想用第三方的话可以使用这个方法)
+	private func fullscreenPop() {
+		
+		// 1.获取系统的Pop手势
+		guard let systemGes = interactivePopGestureRecognizer else { return }
+		
+		// 2.获取手势添加到的View中
+		guard let gesView = systemGes.view else { return }
+		
+		let targets = systemGes.value(forKey: "_targets") as? [NSObject]
+		guard let targetObjc = targets?.first else { return }
+		
+		// 3.2.取出target
+		guard let target = targetObjc.value(forKey: "target") else { return }
+		
+		// 3.3.取出Action
+		let action = Selector(("handleNavigationTransition:"))
+		
+		// 4.创建自己的Pan手势
+		let panGes = UIPanGestureRecognizer()
+		gesView.addGestureRecognizer(panGes)
+		panGes.addTarget(target, action: action)
+	}
 }
-
-//extension UINavigationController:UIGestureRecognizerDelegate{
-//
-//    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-//        let isLeftToRight = UIApplication.shared.userInterfaceLayoutDirection == .leftToRight
-//        guard let ges = gestureRecognizer as? UIPanGestureRecognizer else {
-//            return true
-//        }
-//        if ges.translation(in: gestureRecognizer.view).x * (isLeftToRight ? 1 : -1) <= 0
-//            || value(forKey: "__isTransitioning") as! Bool
-//            || disablePopGesture{
-//            return false
-//        }
-//        return viewControllers.count != 1
-//    }
-//}
 
 extension UINavigationController{
     override open var preferredStatusBarStyle:UIStatusBarStyle{
@@ -64,19 +63,6 @@ enum LGNavigationBarStyle {
 }
 
 extension UINavigationController{
-    private struct AssociatedKeys{
-        static var disablePopGesture:Void?
-    }
-    
-    var disablePopGesture:Bool{
-        get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.disablePopGesture) as? Bool ?? false
-        }
-        set {
-            objc_setAssociatedObject(self, &AssociatedKeys.disablePopGesture, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        }
-    }
-    
     func barStyle(_ style:LGNavigationBarStyle){
         //navibar,BarButtonItem文字属性
         let itemAttr = [NSAttributedStringKey.foregroundColor: UIColor.hex(hexString:"#00ACCC"),

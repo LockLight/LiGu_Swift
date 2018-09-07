@@ -24,5 +24,7 @@ pod 'MBProgressHUD'
 pod 'HMSegmentedControl'
 pod 'IQKeyboardManagerSwift'
 pod 'EmptyDataSet-Swift'
+pod 'URLNavigator'
+pod 'FDFullscreenPopGesture'
 
 end

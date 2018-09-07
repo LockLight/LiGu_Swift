@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.7.3)
   - EmptyDataSet-Swift (4.0.5)
+  - FDFullscreenPopGesture (1.1)
   - HandyJSON (4.1.3)
   - HMSegmentedControl (1.5.5)
   - IQKeyboardManagerSwift (6.1.1)
@@ -23,9 +24,11 @@ PODS:
   - Reusable/View (4.0.2)
   - SnapKit (4.0.0)
   - Then (2.3.0)
+  - URLNavigator (2.0.6)
 
 DEPENDENCIES:
   - EmptyDataSet-Swift
+  - FDFullscreenPopGesture
   - HandyJSON
   - HMSegmentedControl
   - IQKeyboardManagerSwift
@@ -38,6 +41,7 @@ DEPENDENCIES:
   - Reusable
   - SnapKit
   - Then
+  - URLNavigator
 
 EXTERNAL SOURCES:
   Keys:
@@ -46,6 +50,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   EmptyDataSet-Swift: a25810f50c3adfaa3840aa33ae8b5ba12ac29279
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   HandyJSON: bc81fbeb62d65ae5d5942ed29bc4a8265d18c1e8
   HMSegmentedControl: f514c6dad47aa3065e0ed2e8046b73efc71221b9
   IQKeyboardManagerSwift: 977affaeb4d6e971975c7790a6850f31d38f1207
@@ -59,7 +64,8 @@ SPEC CHECKSUMS:
   Reusable: 584a5629747c52e0f6a77841b400dc2643f6fa0f
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   Then: ee21c97b85ff6062b9b0080c9abb1eea46743345
+  URLNavigator: 2357a32f3b3787b748bf87deb927761f8b0f7f53
 
-PODFILE CHECKSUM: 6f3541620f2276a544250fff99bfcadec79420c8
+PODFILE CHECKSUM: 2a82d0a5af36fc8f98c544fb6740d424c37b13bc
 
 COCOAPODS: 1.2.1
